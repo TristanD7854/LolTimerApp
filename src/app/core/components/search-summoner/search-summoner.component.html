@@ -1,0 +1,6 @@
+<!-- Template form -->
+<form (ngSubmit)="onSubmitForm()">
+    <label for="summonerNameInput">Search a summoner name</label>
+    <input id="summonerNameInput" name="summonerName" type="text" [(ngModel)]="summonerName">
+    <button type="submit">Search</button>
+</form>
