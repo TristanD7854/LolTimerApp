@@ -2,9 +2,11 @@
 
 -Display all champion names in a game                   DONE
 
--Add eslint, rules : subscribe should be destroyed, quotes, commas ...
+-Add prettier + eslint, rules : subscribe should be destroyed, quotes, commas ...
 
 -Add husky pre-commit hooks
+
+-Use Jest
 
 -Add one Cypress test
 
@@ -15,6 +17,7 @@
 -Create nodejs proxy server to allow CORS. For some reasons the riot API can be called without issue, unless the response is an error (404 for example).
 It should block all calls.
 front -> proxy server -> riot api -> request with CORS not enabled -> proxy server -> request with CORS enabled -> front
+https://youtu.be/ZGymN8aFsv4
 
 -Use riot-api data to create a lot of components, and update them at 5sec interval (no need I think, data might not change with the api)
 https://developer.riotgames.com/docs/lol
