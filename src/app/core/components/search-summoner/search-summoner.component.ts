@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Subscription, switchMap, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { of, Subscription, } from 'rxjs';
 import { CurrentGameInfo } from '../../models/riot-api/spectator.model';
+import { ChampionsService } from '../../services/champions/champions.service';
 import { RiotApiService } from '../../services/riot-api/riot-api.service';
+import { SaveService } from '../../services/save/save.service';
 
 @Component({
   selector: 'search-summoner',
@@ -12,10 +14,9 @@ import { RiotApiService } from '../../services/riot-api/riot-api.service';
 export class SearchSummonerComponent implements OnInit, OnDestroy
 {
   public summonerName!: string;
-  private currentGameInfo!: CurrentGameInfo;
   private subscription: Subscription = new Subscription();
 
-  constructor(private riotApiService: RiotApiService) { }
+  constructor(private riotApiService: RiotApiService, private championsService: ChampionsService, private router: Router, private saveService: SaveService) { }
 
   ngOnInit(): void
   {
@@ -25,12 +26,19 @@ export class SearchSummonerComponent implements OnInit, OnDestroy
   {
     // call service with summonerName
     this.subscription.add(
-      this.riotApiService.getCurrentGameInfoWithSummonerName(this.summonerName)
-        .subscribe((currentGameInfoResp: any) =>
-        {
-          // todo : manage errors
-          this.currentGameInfo = currentGameInfoResp;
-          console.log(this.currentGameInfo.bannedChampions)
+      this.riotApiService.getCurrentGameInfoWithSummonerName(this.summonerName, false)
+        .subscribe({
+          next: (res: CurrentGameInfo) =>
+          {
+            this.saveService.setCurrentGameInfo(res)
+            this.router.navigateByUrl('game');
+          },
+          error: (e) =>
+          {
+            console.log("error !")
+            console.log(e)
+          },
+          complete: () => console.info('complete')
         })
     );
   }

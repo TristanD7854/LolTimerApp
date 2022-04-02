@@ -1,13 +1,10 @@
--Create folders hierarchy, some services, mocks.
+-Create folders hierarchy, some services, mocks.        DONE
 
--Add eslint
+-Display all champion names in a game                   DONE
+
+-Add eslint, rules : subscribe should be destroyed, quotes, commas ...
 
 -Add husky pre-commit hooks
-
--Create functions to return mock data
-Add more mock json for riot-api spectator v4 (10, take them at 3mn interval from one online game)
-
--Create global timeout, fetch data very 5 seconds, test it with 10 riot-api spectator v4 real/mock
 
 -Add one Cypress test
 
@@ -15,7 +12,18 @@ Add more mock json for riot-api spectator v4 (10, take them at 3mn interval from
 
 -Add SonarQube : code smells, 70% coverage.
 
--Use riot-api data to create a lot of components, and update them at 5sec interval.
+-Create nodejs proxy server to allow CORS. For some reasons the riot API can be called without issue, unless the response is an error (404 for example).
+It should block all calls.
+front -> proxy server -> riot api -> request with CORS not enabled -> proxy server -> request with CORS enabled -> front
+
+-Use riot-api data to create a lot of components, and update them at 5sec interval (no need I think, data might not change with the api)
+https://developer.riotgames.com/docs/lol
+ultis cds : http://ddragon.leagueoflegends.com/cdn/12.5.1/data/en_US/champion/Aatrox.json
+    search 120,100,80
+http://ddragon.leagueoflegends.com/cdn/12.5.1/data/en_US/item.json
+    Zhonia cd : 	Effect3Amount":"120
+    GA cd : 		Effect3Amount":"300
+https://developer.riotgames.com/docs/lol
 
 -Use lcu api to create a lot of components, and update them at 5sec interval.
 If lcu can't be called (or the user doesn't want to), don't show the related components
