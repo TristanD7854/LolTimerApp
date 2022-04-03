@@ -3,11 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class RunesService
-{
-
-  constructor() { }
-}
+export class RunesService {}
 
 /*
 http://ddragon.leagueoflegends.com/cdn/12.6.1/data/en_US/runesReforged.json

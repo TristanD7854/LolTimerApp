@@ -7,15 +7,12 @@ import { SaveService } from '../../services/save/save.service';
   templateUrl: './champion-list.component.html',
   styleUrls: ['./champion-list.component.scss']
 })
-export class ChampionListComponent implements OnInit
-{
-
+export class ChampionListComponent implements OnInit {
   public currentGameInfo!: CurrentGameInfo;
 
-  constructor(private saveService: SaveService) { }
+  constructor(private saveService: SaveService) {}
 
-  ngOnInit(): void
-  {
-    this.currentGameInfo = this.saveService.getCurrentGameInfo()
+  ngOnInit(): void {
+    this.currentGameInfo = this.saveService.getCurrentGameInfo();
   }
 }

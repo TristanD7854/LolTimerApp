@@ -7,17 +7,16 @@ import { VersionService } from './core/services/version/version.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit
-{
-  constructor(private championsService: ChampionsService, private versionService: VersionService) { }
+export class AppComponent implements OnInit {
+  constructor(
+    private championsService: ChampionsService,
+    private versionService: VersionService
+  ) {}
 
-  ngOnInit(): void
-  {
-    let obsInitialize = this.versionService.initialize();
+  ngOnInit(): void {
+    const obsInitialize = this.versionService.initialize();
 
-    obsInitialize.subscribe(() =>
-      this.championsService.initialize()
-    )
+    obsInitialize.subscribe(() => this.championsService.initialize());
   }
 
   // todo : have an option to show/hide elos, by default it is hidden

@@ -6,8 +6,7 @@ import { VersionService } from '../version/version.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ChampionsService
-{
+export class ChampionsService {
   // give champion name, champion stats + champion images
 
   // http://ddragon.leagueoflegends.com/cdn/12.6.1/data/fr_FR/champion/Aatrox.json
@@ -17,37 +16,37 @@ export class ChampionsService
   private championJsonUrl!: string;
   private allChampionInfo: any;
 
-  constructor(private http: HttpClient, private versionService: VersionService) { }
+  constructor(
+    private http: HttpClient,
+    private versionService: VersionService
+  ) {}
 
-  public initialize()
-  {
+  public initialize() {
     this.championJsonUrl = `http://ddragon.leagueoflegends.com/cdn/${this.versionService.getCurrentVersion()}/data/fr_FR/champion.json`;
 
-    this.getAllChampionsInfo().subscribe(resp =>
-    {
+    this.getAllChampionsInfo().subscribe((resp) => {
       this.allChampionInfo = resp;
-    })
+    });
   }
 
-  public getAllChampionsInfo(): Observable<any>
-  {
+  public getAllChampionsInfo(): Observable<any> {
     return this.http.get<any>(this.championJsonUrl);
   }
 
-  public getChampionName(id: number): string
-  {
-    for (let championName in this.allChampionInfo.data) 
-    {
-      if (this.allChampionInfo.data.hasOwnProperty(championName))
-      {
-        if (this.allChampionInfo.data[championName].key == id)
-        {
+  public getChampionName(id: number): string {
+    for (const championName in this.allChampionInfo.data) {
+      if (
+        Object.prototype.hasOwnProperty.call(
+          this.allChampionInfo.data,
+          championName
+        )
+      ) {
+        if (this.allChampionInfo.data[championName].key == id) {
           return championName;
         }
       }
-    };
+    }
 
-    return "Champion not found";
+    return 'Champion not found';
   }
-
 }

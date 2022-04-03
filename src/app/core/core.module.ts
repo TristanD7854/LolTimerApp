@@ -8,17 +8,13 @@ import { ChampionListComponent } from './components/champion-list/champion-list.
 import { ChampionComponent } from './components/champion/champion.component';
 
 @NgModule({
-    declarations: [
-        SearchSummonerComponent,
-        ChampionListComponent,
-        ChampionComponent,
-    ],
-    imports: [CommonModule, RouterModule, FormsModule, HttpClientModule],
-    exports: [SearchSummonerComponent],
-    providers: [
-    ],
-
+  declarations: [
+    SearchSummonerComponent,
+    ChampionListComponent,
+    ChampionComponent
+  ],
+  imports: [CommonModule, RouterModule, FormsModule, HttpClientModule],
+  exports: [SearchSummonerComponent],
+  providers: []
 })
-export class CoreModule
-{
-}
+export class CoreModule {}

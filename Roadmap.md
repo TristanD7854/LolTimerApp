@@ -1,8 +1,8 @@
--Create folders hierarchy, some services, mocks.        DONE
+-Create folders hierarchy, some services, mocks.            DONE
 
--Display all champion names in a game                   DONE
+-Display all champion names in a game                       DONE
 
--Add prettier + eslint, rules : subscribe should be destroyed, quotes, commas ...
+-Add prettier + eslint, rules : quotes, commas ...          DONE
 
 -Add husky pre-commit hooks
 

@@ -7,8 +7,7 @@ import { ChampionsService } from '../../services/champions/champions.service';
   templateUrl: './champion.component.html',
   styleUrls: ['./champion.component.scss']
 })
-export class ChampionComponent implements OnInit
-{
+export class ChampionComponent implements OnInit {
   // ask champions-service + items-service + lcu-service to get total max hp of every champion, lifesteal, mr, armor ...
   // display items
   // another component will display if no anti heal vs lots of healing champs/items
@@ -18,11 +17,12 @@ export class ChampionComponent implements OnInit
 
   public championName!: string;
 
-  constructor(private championsService: ChampionsService) { }
+  constructor(private championsService: ChampionsService) {}
 
-  ngOnInit(): void
-  {
-    this.championName = this.championsService.getChampionName(this.currentGameParticipant.championId);
+  ngOnInit(): void {
+    this.championName = this.championsService.getChampionName(
+      this.currentGameParticipant.championId
+    );
     // display profileIconId
     // call championsService and get image
     // call RunesService, SummonerSpellsService and get name/images
