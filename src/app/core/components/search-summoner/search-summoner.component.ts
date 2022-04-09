@@ -26,7 +26,7 @@ export class SearchSummonerComponent implements OnDestroy {
     // call service with summonerName
     this.subscription.add(
       this.riotApiService
-        .getCurrentGameInfoWithSummonerName(this.summonerName, false)
+        .getCurrentGameInfoWithSummonerName(this.summonerName, true)
         .subscribe({
           next: (res: CurrentGameInfo) => {
             this.saveService.setCurrentGameInfo(res);
