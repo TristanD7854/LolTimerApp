@@ -35,4 +35,3 @@ ng run LolTimerApp:cypress-open
 
 or headless version :  
 ng run LolTimerApp:cypress-run   
-(can maybe be used like jest test to validate build)  

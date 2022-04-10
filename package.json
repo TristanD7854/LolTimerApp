@@ -20,7 +20,10 @@
     "preset": "jest-preset-angular",
     "setupFilesAfterEnv": [
       "<rootDir>/setup-jest.ts"
-    ]
+    ],
+    "modulePathIgnorePatterns": ["cypress"],
+    "collectCoverage": true,
+    "coverageDirectory": "./output/"
   },
   "lint-staged": {
     "*.ts": "eslint --fix"
