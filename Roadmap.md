@@ -1,75 +1,62 @@
 ### Setup
 
--Create folders hierarchy, some services, mocks.            DONE
-
--Display all champion names in a game                       DONE
-
--Use Jest                                                   DONE
-
--Add prettier + eslint, rules : quotes, commas ...          DONE
-
--Add husky pre-commit hooks + lint-staged                   DONE
-
--Add one Cypress test                                       DONE
-
--Create nodejs proxy server to allow CORS.
-It should block all calls.
-front -> proxy server -> riot api -> 
-    request with CORS not enabled -> 
-    proxy server -> request with CORS enabled -> front
-https://youtu.be/ZGymN8aFsv4                                DONE
-
--Add SonarQube : code smells, 70% coverage.                 ABORTED -- TOO HARD
-
--Create pull-request for TU. Use code coverage to see.      TODO
---- to remove from this roadmap : make cleaner .md (use table, color ...) (same for other vscode projects)
-
--Add Jenkins integration, Pull Requests.                    ABORTED -- TOO HARD
-Build should be ok to merge.
+| Objective      | Advancement |
+| -----------    | ----------- |
+| Create folders hierarchy, some services, mocks.            | DONE |
+| Display all champion names in a game                       | DONE |
+| Use Jest                                                   | DONE |
+| Add prettier + eslint, rules : quotes, commas ...          | DONE |
+| Add husky pre-commit hooks + lint-staged                   | DONE |
+| Add one Cypress test                                       | DONE |
+| Create nodejs proxy server to allow CORS. [video](https://youtu.be/ZGymN8aFsv4) | DONE |        
+| Add SonarQube : code smells, 70% coverage.                 | ABORTED -- TOO HARD | 
+| Create pull-request for TU. Use code coverage to see.     | TODO |
+| Add Jenkins integration, Pull Requests.                    | ABORTED -- TOO HARD |
 
 # Angular, what I'd love to implement
 
--different modules, not everything in core !
+| different modules, not everything in core !
     create different features
--directive
--modal
--lazy loading (modules, components)
--login + guards (canActivate)
+| directive
+| modal
+| lazy loading (modules, components)
+| login + guards (canActivate)
 
 ### Riot API
 
-https://developer.riotgames.com/docs/lol
-ultis cds : http://ddragon.leagueoflegends.com/cdn/12.5.1/data/en_US/champion/Aatrox.json
-    search 120,100,80
-http://ddragon.leagueoflegends.com/cdn/12.5.1/data/en_US/item.json
-    Zhonia cd : 	Effect3Amount":"120
-    GA cd : 		Effect3Amount":"300
-https://developer.riotgames.com/docs/lol
+https://developer.riotgames.com/docs/lol  
+ultis cds : http://ddragon.leagueoflegends.com/cdn/12.5.1/data/en_US/champion/Aatrox.json  
+    search 120,100,80  
+http://ddragon.leagueoflegends.com/cdn/12.5.1/data/en_US/item.json  
+    Zhonia cd : 	Effect3Amount":"120  
+    GA cd : 		Effect3Amount":"300  
+https://developer.riotgames.com/docs/lol  
     
     
--manage errors from api calls
+    
+-manage errors from api calls  
 
--routing for /game/summonerName. Back button.
+-routing for /game/summonerName. Back button.  
 
--display game length
+-display game length  
 
--display summoner name correctly (main summoner should have a different color)
-    can hide them, replaced with champion names if so
--display champions  (images with names on mouse over)
--display summoners  (images with names on mouse over, cd (aram cds different, one rune reduces them))
+-display summoner name correctly (main summoner should have a different color)  
+    can hide them, replaced with champion names if so  
+-display champions  (images with names on mouse over)  
+-display summoners  (images with names on mouse over, cd (aram cds different, one rune reduces them))  
 
--can click on summoners for timer   (clicking)
-    can click on it, default timer is -5, can click on +/++/-/-- buttons to add/remove 5/10sec
-    can change default value of 5
-    display how much time is delayed, like 40 displayed if +,++,++,++,-,+ (default5+5+10+10=10-5+5)
-    possible to overwrite current timer by clicking again on it
-        after that, button to cancel the override is displayed for 5s, with a circular timer (like a clock)
--input field to time summoners      (writing)
-    exple : "f mid 12.15"
-    Possible to cancel last command with "cancel" or by clicking it (3 last commands displayed)
-        timer of 5sec after canceling it, possible to uncancel
-    Manage errors
--display last seconds the summs are not available (highlight summs with timer + colors)
+-can click on summoners for timer   (clicking)  
+    can click on it, default timer is -5, can click on +/++/-/-- buttons to add/remove 5/10sec  
+    can change default value of 5  
+    display how much time is delayed, like 40 displayed if +,++,++,++,-,+ (default5+5+10+10=10-5+5)  
+    possible to overwrite current timer by clicking again on it  
+        after that, button to cancel the override is displayed for 5s, with a circular timer (like a clock)  
+-input field to time summoners      (writing)  
+    exple : "f mid 12.15"  
+    Possible to cancel last command with "cancel" or by clicking it (3 last commands displayed)  
+        timer of 5sec after canceling it, possible to uncancel  
+    Manage errors  
+-display last seconds the summs are not available (highlight summs with timer + colors)  
 
 -display runes      (images with names on mouse over)
     can hide them, only show important ones ?
