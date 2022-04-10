@@ -21,7 +21,9 @@
     "setupFilesAfterEnv": [
       "<rootDir>/setup-jest.ts"
     ],
-    "modulePathIgnorePatterns": ["cypress"]
+    "modulePathIgnorePatterns": ["cypress"],
+    "collectCoverage": true,
+    "coverageDirectory": "./output/"
   },
   "lint-staged": {
     "*.ts": "eslint --fix"
