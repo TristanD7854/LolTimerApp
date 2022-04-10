@@ -19,14 +19,11 @@ export class AppComponent implements OnInit {
     obsInitialize.subscribe(() => this.championsService.initialize());
   }
 
-  // todo : have an option to show/hide elos, by default it is hidden
-  // todo : have an option to use or not lcu (it is shown if it can be used)
-
   /*
-       const interval$ = interval(5000);
-       setTimeout(() =>
-       {
-         interval$.subscribe(value => console.log(value));
-       }, 3000);
-       */
+  const interval$ = interval(5000);
+  setTimeout(() =>
+  {
+    interval$.subscribe(value => console.log(value));
+  }, 3000);
+  */
 }

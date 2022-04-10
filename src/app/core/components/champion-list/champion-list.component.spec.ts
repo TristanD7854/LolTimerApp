@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { SaveService } from '../../services/save/save.service';
 
 import { ChampionListComponent } from './champion-list.component';
 
@@ -8,7 +9,15 @@ describe('ChampionListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ChampionListComponent]
+      declarations: [ChampionListComponent],
+      providers: [
+        {
+          provide: SaveService,
+          useValue: {
+            getCurrentGameInfo: () => jest.fn()
+          }
+        }
+      ]
     }).compileComponents();
   });
 
