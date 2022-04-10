@@ -119,30 +119,29 @@ If lcu can't be called (or the user doesn't want to), don't show the related com
 -display killing sprees (how many kills since last death)
 
 Estimations (search official algo if they exist)
-    -estimate gold diffs, take into account :
-        first blood
-        golds given when dead (see scores)
-        cs killed, careful of sup items
-        towers destroyed (assists or not)
+-estimate gold diffs, take into account :
+    first blood  
+    golds given when dead (see scores)
+    cs killed, careful of sup items  
+    towers destroyed (assists or not)  
 
-    -estimate personal shutdowns in-game + how-much-gold someone gives (same for assist kill)
-        https://leagueoflegends.fandom.com/wiki/Kill
-        Compare it with my games, adapt the algo in consequence
+-estimate personal shutdowns in-game + how-much-gold someone gives (same for assist kill)
+    [wiki](https://leagueoflegends.fandom.com/wiki/Kill)
+    Compare it with my games, adapt the algo in consequence
 
-    -estimate teams shutdowns conditions
-        golds difference
-        objectives
-
+-estimate teams shutdowns conditions
+    golds difference
+    objectives
 
 --
 See events for more ideas
     pinks destroyed ? how many in the map
 
 Would be nice to have but no idea how, because need huge db over time (like opgg, lolalytics ...)
-    who has late game adv
-    % ap/ad/true dmg in enemy team
-    spikes (like ez finishes muramana)
-    % wr player on champs
-    % wr on every matchups ()
+    who has late game adv  
+    % ap/ad/true dmg in enemy team  
+    spikes (like ez finishes muramana)  
+    % wr player on champs  
+    % wr on every matchups ()  
 
 ### Ask for developer key ?

@@ -1,4 +1,5 @@
-# LolTimerApp
+LolTimerApp
+=======
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
 
@@ -28,10 +29,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Running end-to-end cypress tests
 
-ng serve
-+
-ng run LolTimerApp:cypress-open
+ng serve  
++  
+ng run LolTimerApp:cypress-open  
 
-    or headless version :
-ng run LolTimerApp:cypress-run
-(can maybe be used like jest test to validate build)
+or headless version :  
+ng run LolTimerApp:cypress-run   
+(can maybe be used like jest test to validate build)  
