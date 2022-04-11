@@ -2,7 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ParticipantListComponent } from './components/participant-list/participant-list.component';
 
-const routes: Routes = [{ path: '', component: ParticipantListComponent }];
+// todo : '' should redirect back to the search
+const routes: Routes = [
+  { path: ':summonerName', component: ParticipantListComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

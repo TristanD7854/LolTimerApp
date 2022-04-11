@@ -27,6 +27,6 @@ export class ParticipantComponent implements OnInit {
     // call championsService and get image
     // call RunesService, SummonerSpellsService and get name/images
 
-    console.log(this.currentGameParticipant);
+    //console.log(this.currentGameParticipant);
   }
 }

@@ -42,7 +42,7 @@ export class SearchSummonerComponent implements OnDestroy {
             }
           } else {
             this.saveService.setCurrentGameInfo(res);
-            this.router.navigateByUrl('game');
+            this.router.navigateByUrl(`game/${this.summonerName}`);
           }
         })
     );

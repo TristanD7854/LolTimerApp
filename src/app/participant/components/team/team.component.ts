@@ -11,8 +11,6 @@ export class TeamComponent implements OnInit {
   public participants!: CurrentGameParticipant[];
 
   public ngOnInit(): void {
-    console.log('team !');
-
-    console.log('participants = ' + this.participants);
+    //console.log('participants = ' + this.participants);
   }
 }
