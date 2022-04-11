@@ -34,7 +34,7 @@ https://developer.riotgames.com/docs/lol
     
     
     
--manage errors from api calls  
+-manage errors from api calls [like that](https://www.tektutorialshub.com/angular/angular-http-error-handling/)
 
 -routing for /game/summonerName. Back button.  
 
@@ -100,6 +100,8 @@ If lcu can't be called (or the user doesn't want to), don't show the related com
 
 -display own spell damage on every enemy champion
     if too much, just display how much 100 magical/physical dmg would do
+
+-display total mana cost of full combo
 
 -calculates if rabadon or void better against every enemy champ
 

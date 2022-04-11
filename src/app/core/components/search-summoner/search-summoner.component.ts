@@ -1,6 +1,8 @@
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { catchError, Subscription, tap, throwError } from 'rxjs';
+import { CustomErrorMessage, ErrorMessages } from '../../models/errors/errors';
 import { CurrentGameInfo } from '../../models/riot-api/spectator.model';
 import { ChampionsService } from '../../services/champions/champions.service';
 import { RiotApiService } from '../../services/riot-api/riot-api.service';
@@ -17,7 +19,6 @@ export class SearchSummonerComponent implements OnDestroy {
 
   constructor(
     private riotApiService: RiotApiService,
-    private championsService: ChampionsService,
     private router: Router,
     private saveService: SaveService
   ) {}
@@ -27,16 +28,22 @@ export class SearchSummonerComponent implements OnDestroy {
     this.subscription.add(
       this.riotApiService
         .getCurrentGameInfoWithSummonerName(this.summonerName, true)
-        .subscribe({
-          next: (res: CurrentGameInfo) => {
+        .subscribe((res) => {
+          //console.log('res = ' + JSON.stringify(res));
+
+          if (res instanceof CustomErrorMessage) {
+            // todo : use modal here
+            if (res.message === ErrorMessages.summonerNotFound) {
+              console.log('SUMMONER NOT FOUND');
+            } else if (res.message === ErrorMessages.summonerNotInGame) {
+              console.log('SUMMONER NOT IN GAME');
+            } else {
+              console.log('Other error, display message : ' + res.message);
+            }
+          } else {
             this.saveService.setCurrentGameInfo(res);
             this.router.navigateByUrl('game');
-          },
-          error: (e) => {
-            console.log('error !');
-            console.log(e);
-          },
-          complete: () => console.info('complete')
+          }
         })
     );
   }
