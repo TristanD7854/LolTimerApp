@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ChampionsService } from './core/services/champions/champions.service';
-import { VersionService } from './core/services/version/version.service';
+import { ChampionsService } from './participant/services/champions/champions.service';
+import { VersionService } from './participant/services/version/version.service';
 
 @Component({
   selector: 'app-root',

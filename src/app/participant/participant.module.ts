@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ParticipantRoutingModule } from './participant-routing.module';
-import { ParticipantComponent } from '../core/components/participant/participant.component';
-import { ParticipantListComponent } from '../core/components/participant-list/participant-list.component';
+import { ParticipantComponent } from './components/participant/participant.component';
+import { ParticipantListComponent } from './components/participant-list/participant-list.component';
+import { TeamComponent } from './components/team/team.component';
 
 @NgModule({
-  declarations: [ParticipantListComponent, ParticipantComponent],
+  declarations: [ParticipantListComponent, ParticipantComponent, TeamComponent],
   imports: [CommonModule, ParticipantRoutingModule]
 })
 export class ParticipantModule {}

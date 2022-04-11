@@ -1,12 +1,12 @@
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, Subscription, tap, throwError } from 'rxjs';
-import { CustomErrorMessage, ErrorMessages } from '../../models/errors/errors';
-import { CurrentGameInfo } from '../../models/riot-api/spectator.model';
-import { ChampionsService } from '../../services/champions/champions.service';
-import { RiotApiService } from '../../services/riot-api/riot-api.service';
-import { SaveService } from '../../services/save/save.service';
+import { Subscription } from 'rxjs';
+import { RiotApiService } from 'src/app/participant/services/riot-api/riot-api.service';
+import { SaveService } from 'src/app/participant/services/save/save.service';
+import {
+  CustomErrorMessage,
+  ErrorMessages
+} from '../../../participant/models/errors/errors';
 
 @Component({
   selector: 'search-summoner',

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { SaveService } from '../../services/save/save.service';
+import { SaveService } from 'src/app/core/services/save/save.service';
 
 import { ParticipantListComponent } from './participant-list.component';
 

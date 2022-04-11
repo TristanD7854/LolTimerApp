@@ -36,7 +36,9 @@ https://developer.riotgames.com/docs/lol
     
 -manage errors from api calls [like that](https://www.tektutorialshub.com/angular/angular-http-error-handling/)
 
--routing for /game/summonerName. Back button.  
+-routing for /game/summonerName. Back button. Header with Help page and Home
+
+-search css software/website/something to help. Use it.
 
 -display game length  
 
