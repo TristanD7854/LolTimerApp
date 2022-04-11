@@ -3,11 +3,11 @@ import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 import { ChampionsService } from '../../services/champions/champions.service';
 
 @Component({
-  selector: 'champion',
-  templateUrl: './champion.component.html',
-  styleUrls: ['./champion.component.scss']
+  selector: 'participant',
+  templateUrl: './participant.component.html',
+  styleUrls: ['./participant.component.scss']
 })
-export class ChampionComponent implements OnInit {
+export class ParticipantComponent implements OnInit {
   // ask champions-service + items-service + lcu-service to get total max hp of every champion, lifesteal, mr, armor ...
   // display items
   // another component will display if no anti heal vs lots of healing champs/items

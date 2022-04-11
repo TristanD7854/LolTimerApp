@@ -3,11 +3,11 @@ import { CurrentGameInfo } from '../../models/riot-api/spectator.model';
 import { SaveService } from '../../services/save/save.service';
 
 @Component({
-  selector: 'champion-list',
-  templateUrl: './champion-list.component.html',
-  styleUrls: ['./champion-list.component.scss']
+  selector: 'participant-list',
+  templateUrl: './participant-list.component.html',
+  styleUrls: ['./participant-list.component.scss']
 })
-export class ChampionListComponent implements OnInit {
+export class ParticipantListComponent implements OnInit {
   public currentGameInfo!: CurrentGameInfo;
 
   constructor(private saveService: SaveService) {}

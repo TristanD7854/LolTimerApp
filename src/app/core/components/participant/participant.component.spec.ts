@@ -3,15 +3,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 import { ChampionsService } from '../../services/champions/champions.service';
 
-import { ChampionComponent } from './champion.component';
+import { ParticipantComponent } from './participant.component';
 
-describe('ChampionComponent', () => {
-  let component: ChampionComponent;
-  let fixture: ComponentFixture<ChampionComponent>;
+describe('ParticipantComponent', () => {
+  let component: ParticipantComponent;
+  let fixture: ComponentFixture<ParticipantComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ChampionComponent],
+      declarations: [ParticipantComponent],
       providers: [
         HttpClient,
         HttpHandler,
@@ -26,7 +26,7 @@ describe('ChampionComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChampionComponent);
+    fixture = TestBed.createComponent(ParticipantComponent);
     component = fixture.componentInstance;
 
     // todo : create json for that

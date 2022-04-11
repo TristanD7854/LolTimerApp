@@ -1,15 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { SaveService } from '../../services/save/save.service';
 
-import { ChampionListComponent } from './champion-list.component';
+import { ParticipantListComponent } from './participant-list.component';
 
-describe('ChampionListComponent', () => {
-  let component: ChampionListComponent;
-  let fixture: ComponentFixture<ChampionListComponent>;
+describe('ParticipantListComponent', () => {
+  let component: ParticipantListComponent;
+  let fixture: ComponentFixture<ParticipantListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ChampionListComponent],
+      declarations: [ParticipantListComponent],
       providers: [
         {
           provide: SaveService,
@@ -22,7 +22,7 @@ describe('ChampionListComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChampionListComponent);
+    fixture = TestBed.createComponent(ParticipantListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
