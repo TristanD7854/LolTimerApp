@@ -36,9 +36,7 @@ https://developer.riotgames.com/docs/lol
     
 -manage errors from api calls [like that](https://www.tektutorialshub.com/angular/angular-http-error-handling/)
 
--routing for /game/summonerName. Header with Home Page      TODO 
-
--search css software/website/something to help. Use it.
+-routing for /game/summonerName. Header with Home Page      DONE 
 
 -display game length  
 
