@@ -38,9 +38,7 @@ https://developer.riotgames.com/docs/lol
 
 -routing for /game/summonerName. Header with Home Page      DONE 
 
--display game length  
-
--display summoner name correctly (main summoner should have a different color)  
+-display summoner name correctly
     can hide them, replaced with champion names if so  
 -display champions  (images with names on mouse over)  
 -display summoners  (images with names on mouse over, cd (aram cds different, one rune reduces them))  
@@ -66,8 +64,7 @@ https://developer.riotgames.com/docs/lol
 
 -display tower golds (independant of the game), global and local
 
--display minion stats (hp, ad, golds)
-    calculate with game length
+-cache the data (in the proxy server), and update the json only when new version comes out, or requesting new data (for example first time we request the json for Qiyana in patch 12.6.1)
 
 ### LCU API
 
@@ -81,6 +78,11 @@ If lcu can't be called (or the user doesn't want to), don't show the related com
 -menu item to go to own game with lcu
 
 -display champion levels
+
+-display game length
+
+-display minion stats (hp, ad, golds)
+    calculate with game length
 
 -display scores (with cs)
 
@@ -99,6 +101,9 @@ If lcu can't be called (or the user doesn't want to), don't show the related com
 -display warding scores
 
 -display own spell damage on every enemy champion
+    https://hextechdocs.dev/resolving-variables-in-spell-textsa/
+    https://riot-api-libraries.readthedocs.io/en/latest/ddragon.html#common-issues
+        may have to scrap https://leagueoflegends.fandom.com/wiki/Akali/LoL to get damage info
     if too much, just display how much 100 magical/physical dmg would do
 
 -display total mana cost of full combo

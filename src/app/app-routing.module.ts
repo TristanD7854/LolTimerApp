@@ -6,10 +6,7 @@ const routes: Routes = [
   { path: '', component: SearchSummonerComponent },
   {
     path: 'game',
-    loadChildren: () =>
-      import('./participant/participant.module').then(
-        (m) => m.ParticipantModule
-      )
+    loadChildren: () => import('./game/game.module').then((m) => m.GameModule)
   }
 ];
 

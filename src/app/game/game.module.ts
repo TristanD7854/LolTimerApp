@@ -1,0 +1,23 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ParticipantComponent } from './components/participant/participant.component';
+import { ParticipantListComponent } from './components/participant-list/participant-list.component';
+import { TeamComponent } from './components/team/team.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { GameComponent } from './components/game/game.component';
+import { ParticipantRoutingModule } from './game-routing.module';
+import { SettingsComponent } from './components/settings/settings.component';
+import { ParticipantSummsComponent } from './components/participant-summs/participant-summs.component';
+
+@NgModule({
+  declarations: [
+    ParticipantListComponent,
+    ParticipantComponent,
+    TeamComponent,
+    GameComponent,
+    SettingsComponent,
+    ParticipantSummsComponent
+  ],
+  imports: [CommonModule, ParticipantRoutingModule, MatTooltipModule]
+})
+export class GameModule {}

@@ -54,8 +54,4 @@ describe('ParticipantComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should set the correct champion name', () => {
-    expect(component.championName).toEqual('Aatrox');
-  });
 });

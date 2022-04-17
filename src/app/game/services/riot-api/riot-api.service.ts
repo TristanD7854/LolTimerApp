@@ -22,7 +22,6 @@ export class RiotApiService {
       summonerV4Url = `${this.backEndUrl}/summoner/mock?summonerName=${summonerName}`;
     }
 
-    // todo SummonerDTO | Error
     return this.http.get<SummonerDTO>(summonerV4Url).pipe(
       catchError((err: HttpErrorResponse) => {
         console.log(
@@ -48,7 +47,6 @@ export class RiotApiService {
       activeGameSpectatorV4Url = `${this.backEndUrl}/spectator/mock?encryptedSummonerId=${encryptedSummonerId}`;
     }
 
-    // todo CurrentGameInfo | Error
     return this.http.get<CurrentGameInfo>(activeGameSpectatorV4Url).pipe(
       catchError((err: HttpErrorResponse) => {
         //console.log('In getCurrentGameInfo, err.error = ' + JSON.stringify(err.error));
@@ -79,7 +77,6 @@ export class RiotApiService {
         return of(new CustomErrorMessage(err.message));
       }),
       switchMap((res) => {
-        // todo : manage errors
         if (res instanceof CustomErrorMessage) {
           //console.log('error found ici = ' + res.message);
           return of(new CustomErrorMessage(res.message));

@@ -1,0 +1,11 @@
+.participant-container {
+    border: 1px solid cyan;
+    padding: 5px;
+    margin: 5px;
+    text-align: center;
+}
+
+::ng-deep .champion-name-tooltip {
+    color: blue;
+    font-size: 12px;
+}

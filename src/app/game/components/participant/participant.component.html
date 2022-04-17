@@ -1,0 +1,18 @@
+<div class="participant-container">
+    <p>{{ (showSummonerNames$ | async) ? currentGameParticipant.summonerName : champion?.name }}</p>
+    <img [src]="champion?.image" [alt]="champion?.name" width="40" height="40"
+        matTooltip="{{ champion?.name }}"
+        matTooltipPosition="below"
+        matTooltipClass="champion-name-tooltip">
+
+    <img [src]="champion?.passive?.image" [alt]="champion?.passive?.name" width="30" height="30"
+        matTooltip="{{ champion?.passive?.name }}"
+        matTooltipPosition="below">
+
+    <img *ngFor="let spell of champion?.spells" 
+        [src]="spell.image"
+        [alt]="spell.name"
+        width="30" height="30"
+        matTooltip="{{ spell.name }} | {{ spell.cooldown.join() }}"
+        matTooltipPosition="below">
+</div>

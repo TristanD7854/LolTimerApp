@@ -1,12 +1,12 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { RiotApiService } from 'src/app/participant/services/riot-api/riot-api.service';
-import { SaveService } from 'src/app/participant/services/save/save.service';
 import {
   CustomErrorMessage,
   ErrorMessages
-} from '../../../participant/models/errors/errors';
+} from 'src/app/game/models/errors/errors';
+import { RiotApiService } from 'src/app/game/services/riot-api/riot-api.service';
+import { SaveService } from 'src/app/game/services/save/save.service';
 
 @Component({
   selector: 'search-summoner',
