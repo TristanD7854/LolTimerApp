@@ -51,12 +51,9 @@ https://developer.riotgames.com/docs/lol
 
 -language option in settings (change origin of json)        DONE
 
--can click on summoners for timer   (clicking)  
+-can click on summoners for timer   (clicking)              DONE
     can click on it, default timer is -5, can click on +/++/-/-- buttons to add/remove 5/10sec  
-    can change default value of 5  
-    display how much time is delayed, like 40 displayed if +,++,++,++,-,+ (default5+5+10+10=10-5+5)  
-    possible to overwrite current timer by clicking again on it  
-        after that, button to cancel the override is displayed for 5s, with a circular timer (like a clock)  
+
 -input field to time summoners      (writing)  
     exple : "f mid 12.15"  
     Possible to cancel last command with "cancel" or by clicking it (3 last commands displayed)  

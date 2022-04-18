@@ -11,6 +11,7 @@ import { ParticipantSummsComponent } from './components/participant-summs/partic
 import { ParticipantRunesComponent } from './components/participant-runes/participant-runes.component';
 import { GameInfoComponent } from './components/game-info/game-info.component';
 import { FormsModule } from '@angular/forms';
+import { SummonerSpellComponent } from './components/summoner-spell/summoner-spell.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     SettingsComponent,
     ParticipantSummsComponent,
     ParticipantRunesComponent,
-    GameInfoComponent
+    GameInfoComponent,
+    SummonerSpellComponent
   ],
   imports: [
     CommonModule,

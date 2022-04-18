@@ -34,12 +34,4 @@ export class AppComponent implements OnInit {
         }
       });
   }
-
-  /*
-  const interval$ = interval(5000);
-  setTimeout(() =>
-  {
-    interval$.subscribe(value => console.log(value));
-  }, 3000);
-  */
 }

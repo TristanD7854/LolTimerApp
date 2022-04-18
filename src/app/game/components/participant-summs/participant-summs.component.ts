@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
-import { Summs } from '../../models/summs.model';
+import { Summs, Summ } from '../../models/summs.model';
 import { SummonerSpellsService } from '../../services/summoner-spells/summoner-spells.service';
 
 @Component({
@@ -15,6 +16,9 @@ export class ParticipantSummsComponent implements OnInit {
   public summs!: Summs;
   // todoafter : manage changing summs in game (spellbook)
 
+  public summ1$: Subject<Summ> = new Subject<Summ>();
+  public summ2$: Subject<Summ> = new Subject<Summ>();
+
   constructor(private summonerSpellsService: SummonerSpellsService) {}
 
   public ngOnInit(): void {
@@ -27,5 +31,7 @@ export class ParticipantSummsComponent implements OnInit {
     this.summs = this.summonerSpellsService.getSumms(
       this.currentGameParticipant
     );
+    this.summ1$.next(this.summs.summ1);
+    this.summ2$.next(this.summs.summ2);
   }
 }

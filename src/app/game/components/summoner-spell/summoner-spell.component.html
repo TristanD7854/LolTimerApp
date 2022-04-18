@@ -1,0 +1,30 @@
+<div>
+    <button (click)="addTime(-10)">
+        <p>--</p>
+    </button>
+    <button (click)="addTime(-5)">
+        <p>-</p>
+    </button>
+
+    <input type="image" 
+        [src]="summ?.image" 
+        [alt]="summ?.name" 
+        width="30" 
+        height="30"
+        [style.opacity]="summOpacity"
+        matTooltip="{{ summ?.name }} | {{ summ?.cooldown }}"
+        matTooltipPosition="below"
+        (click)="useSumm(5)">
+
+    <button (click)="addTime(5)">
+        <p>+</p>
+    </button>
+    <button (click)="addTime(10)">
+        <p>++</p>
+    </button>
+</div>
+    
+<p  matTooltip="Lucidity boots affect this"
+    matTooltipPosition="below">
+    {{timeLeft}}
+</p>

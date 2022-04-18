@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { useBackendMockData } from 'src/app/game/constants/mock.constants';
 import {
   CustomErrorMessage,
   ErrorMessages
@@ -27,7 +28,10 @@ export class SearchSummonerComponent implements OnDestroy {
     // call service with summonerName
     this.subscription.add(
       this.riotApiService
-        .getCurrentGameInfoWithSummonerName(this.summonerName, true)
+        .getCurrentGameInfoWithSummonerName(
+          this.summonerName,
+          useBackendMockData
+        )
         .subscribe((res) => {
           //console.log('res = ' + JSON.stringify(res));
 

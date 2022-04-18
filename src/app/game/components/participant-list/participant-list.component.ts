@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { useBackendMockData } from '../../constants/mock.constants';
 import { CustomErrorMessage, ErrorMessages } from '../../models/errors/errors';
 import {
   CurrentGameInfo,
@@ -33,7 +34,7 @@ export class ParticipantListComponent implements OnInit {
 
       // todo : find way to factorise with block from search-summoner
       this.riotApiService
-        .getCurrentGameInfoWithSummonerName(summonerName, true)
+        .getCurrentGameInfoWithSummonerName(summonerName, useBackendMockData)
         .subscribe((res) => {
           //console.log('res ici = ' + JSON.stringify(res));
 
