@@ -210,11 +210,13 @@ If lcu can't be called (or the user doesn't want to), don't show the related com
 -display runes avancements
 
 -display total stats (advanced ones too)
+    consider stackings (garen w passive, malphite w passive), items, runes, ...
 
 -display healing items/runes + anti-healing
 
--display ult cds
+-display all cds of spells below them
     (clicking) + (writing) for them (like summs)
+    Tooltip should only display base cd (with spell name (and range ?))
 
 -display warding scores
 
@@ -233,12 +235,19 @@ If lcu can't be called (or the user doesn't want to), don't show the related com
 
 -display killing sprees (how many kills since last death)
 
+-when someone gets a lot of golds (>100 (settings var)) 
+    suddenly (with kills/assist/tower), display it near them for some time 
+    (5s, reset if earns again) in a really visible way
+
 Estimations (search official algo if they exist)
 -estimate gold diffs, take into account :
     first blood  
     golds given when dead (see scores)
     cs killed, careful of sup items  
     towers destroyed (assists or not)  
+    platings  
+    gp/tf passive, pyke ult  
+    orn passive items bonus gold : 1k/item
 
 -estimate personal shutdowns in-game + how-much-gold someone gives (same for assist kill)
     [wiki](https://leagueoflegends.fandom.com/wiki/Kill)
@@ -250,7 +259,6 @@ Estimations (search official algo if they exist)
 
 --
 See events for more ideas
-    pinks destroyed ? how many in the map
 
 Would be nice to have but no idea how, because need huge db over time (like opgg, lolalytics ...)
     who has late game adv  
