@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Champion } from '../../models/riot-api/champion.model';
+import { Champion } from '../../models/champion.model';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 import { Settings } from '../../models/settings/settings.model';
 import { ChampionsService } from '../../services/champions/champions.service';
 import { SettingsService } from '../../services/settings/settings.service';
+import { VersionService } from '../../services/version/version.service';
 
 @Component({
   selector: 'participant',
@@ -20,15 +21,21 @@ export class ParticipantComponent implements OnInit {
   public currentGameParticipant!: CurrentGameParticipant;
 
   public champion!: Champion;
-  //public showSummonerNames!: boolean;
   public showSummonerNames$!: Observable<boolean>;
 
   constructor(
     private championsService: ChampionsService,
+    private versionService: VersionService,
     private settingsService: SettingsService
   ) {}
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
+    this.championsService.isReady.subscribe((resp) => {
+      if (resp) this.loadInfo();
+    });
+  }
+
+  private loadInfo(): void {
     const championName = this.championsService.getChampionName(
       this.currentGameParticipant.championId
     );
@@ -38,21 +45,6 @@ export class ParticipantComponent implements OnInit {
         return settings.showSummonerNames;
       })
     );
-
-    /*
-    this.settingsService.getSettings().subscribe((res: Settings) => {
-      console.log('res found !!');
-      this.showSummonerNames = res.showSummonerNames;
-    });
-    */
-
-    /*
-      this.settingsService
-      .getSettings()
-      .pipe(() => {
-        return of(true);
-      });
-      */
 
     this.championsService
       .getChampion(championName)

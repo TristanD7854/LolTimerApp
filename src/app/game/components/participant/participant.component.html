@@ -15,4 +15,8 @@
         width="30" height="30"
         matTooltip="{{ spell.name }} | {{ spell.cooldown.join() }}"
         matTooltipPosition="below">
+
+    <participant-summs [currentGameParticipant]="currentGameParticipant"></participant-summs>
+
+    <participant-runes [currentGameParticipant]="currentGameParticipant"></participant-runes>
 </div>

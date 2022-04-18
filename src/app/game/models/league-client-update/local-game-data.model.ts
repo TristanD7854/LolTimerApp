@@ -6,10 +6,10 @@ export interface LocalGameData {
 }
 
 export interface ActivePlayer {
-  todo: string;
+  afaire: string;
 }
 export interface Player {
-  todo: string;
+  afaire: string;
 }
 
 export interface LolEvent {

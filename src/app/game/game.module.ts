@@ -8,6 +8,7 @@ import { GameComponent } from './components/game/game.component';
 import { ParticipantRoutingModule } from './game-routing.module';
 import { SettingsComponent } from './components/settings/settings.component';
 import { ParticipantSummsComponent } from './components/participant-summs/participant-summs.component';
+import { ParticipantRunesComponent } from './components/participant-runes/participant-runes.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ParticipantSummsComponent } from './components/participant-summs/partic
     TeamComponent,
     GameComponent,
     SettingsComponent,
-    ParticipantSummsComponent
+    ParticipantSummsComponent,
+    ParticipantRunesComponent
   ],
   imports: [CommonModule, ParticipantRoutingModule, MatTooltipModule]
 })

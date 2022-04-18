@@ -1,0 +1,10 @@
+<div>
+    <img [src]="summs?.summ1?.image" [alt]="summs?.summ1?.name" width="30" height="30"
+        matTooltip="{{ summs?.summ1?.name }}"
+        matTooltipPosition="below">
+    <p>{{summs?.summ1?.cooldown}}</p>
+    <img [src]="summs?.summ2?.image" [alt]="summs?.summ2?.name" width="30" height="30"
+        matTooltip="{{ summs?.summ2?.name }}"
+        matTooltipPosition="below">
+    <p>{{summs?.summ2?.cooldown}}</p>
+</div>

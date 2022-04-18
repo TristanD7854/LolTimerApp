@@ -1,0 +1,28 @@
+<div>
+    <div>
+        <img *ngFor="let rune of runes?.primaryPath" 
+            [src]="rune.image"
+            [alt]="rune.name"
+            width="30" height="30"
+            matTooltip="{{ rune.name }}"
+            matTooltipPosition="below">
+    </div>
+
+    <div>
+        <img *ngFor="let rune of runes?.secondaryPath" 
+            [src]="rune.image"
+            [alt]="rune.name"
+            width="30" height="30"
+            matTooltip="{{ rune.name }}"
+            matTooltipPosition="below">
+    </div>
+
+    <div>
+        <img *ngFor="let rune of runes?.statRunes" 
+            [src]="rune.image"
+            [alt]="rune.name"
+            width="30" height="30"
+            matTooltip="{{ rune.name }}"
+            matTooltipPosition="below">
+    </div>
+</div>

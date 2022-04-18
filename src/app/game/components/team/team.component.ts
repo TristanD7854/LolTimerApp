@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 
 @Component({
@@ -6,11 +6,7 @@ import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss']
 })
-export class TeamComponent implements OnInit {
+export class TeamComponent {
   @Input()
   public participants!: CurrentGameParticipant[];
-
-  public ngOnInit(): void {
-    //console.log('participants = ' + this.participants);
-  }
 }

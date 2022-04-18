@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { EMPTY, map, Observable, of } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { VersionService } from '../version/version.service';
-import { Champion, Passive, Spell } from '../../models/riot-api/champion.model';
+import { Champion, Passive, Spell } from '../../models/champion.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,15 +11,15 @@ export class ChampionsService {
   // give champion name, champion stats + champion images
 
   // http://ddragon.leagueoflegends.com/cdn/12.6.1/data/fr_FR/champion/Aatrox.json
-
   // https://developer.riotgames.com/docs/lol
-
   // http://ddragon.leagueoflegends.com/cdn/12.7.1/img/champion/Aatrox.png
 
   private allChampionJsonUrl!: string;
   private allChampionInfo: any;
-  private version!: string;
-  private dataDragonUrl!: string;
+
+  public isReady: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
 
   constructor(
     private http: HttpClient,
@@ -27,12 +27,11 @@ export class ChampionsService {
   ) {}
 
   public initialize() {
-    this.version = this.versionService.getCurrentVersion();
-    this.dataDragonUrl = `http://ddragon.leagueoflegends.com/cdn/${this.version}`;
-    this.allChampionJsonUrl = `${this.dataDragonUrl}/data/fr_FR/champion.json`;
+    this.allChampionJsonUrl = `${this.versionService.dataDragonUrl}/data/fr_FR/champion.json`;
 
     this.getAllChampionsInfo().subscribe((resp) => {
       this.allChampionInfo = resp;
+      this.isReady.next(true);
     });
   }
 
@@ -42,6 +41,7 @@ export class ChampionsService {
 
   public getChampionName(id: number): string {
     for (const championName in this.allChampionInfo.data) {
+      // verify that its own property
       if (
         Object.prototype.hasOwnProperty.call(
           this.allChampionInfo.data,
@@ -58,7 +58,7 @@ export class ChampionsService {
   }
 
   public getChampion(championName: string): Observable<Champion> {
-    const championJsonUrl = `${this.dataDragonUrl}/data/fr_FR/champion/${championName}.json`;
+    const championJsonUrl = `${this.versionService.dataDragonUrl}/data/fr_FR/champion/${championName}.json`;
 
     return this.http.get<any>(championJsonUrl).pipe(
       map((response) => {
@@ -71,7 +71,7 @@ export class ChampionsService {
 
           const spell: Spell = {
             name: spellData.name,
-            image: `${this.dataDragonUrl}/img/spell/${spellData.image.full}`,
+            image: `${this.versionService.dataDragonUrl}/img/spell/${spellData.image.full}`,
             cooldown: spellData.cooldown,
             cost: spellData.cost
           };
@@ -81,14 +81,14 @@ export class ChampionsService {
 
         const passive: Passive = {
           name: championData.passive.name,
-          image: `${this.dataDragonUrl}/img/passive/${championData.passive.image.full}`
+          image: `${this.versionService.dataDragonUrl}/img/passive/${championData.passive.image.full}`
         };
 
         return {
           name: championData.name,
           spells: spells,
           passive: passive,
-          image: `${this.dataDragonUrl}/img/champion/${championData.image.full}`,
+          image: `${this.versionService.dataDragonUrl}/img/champion/${championData.image.full}`,
           stats: championData.stats
         };
       })

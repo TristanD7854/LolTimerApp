@@ -32,7 +32,7 @@ export class SearchSummonerComponent implements OnDestroy {
           //console.log('res = ' + JSON.stringify(res));
 
           if (res instanceof CustomErrorMessage) {
-            // todo : use modal here
+            // todoafter : use modal here
             if (res.message === ErrorMessages.summonerNotFound) {
               console.log('SUMMONER NOT FOUND');
             } else if (res.message === ErrorMessages.summonerNotInGame) {

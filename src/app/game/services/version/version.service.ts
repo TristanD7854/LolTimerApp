@@ -9,6 +9,8 @@ export class VersionService {
   private versionUrl = 'https://ddragon.leagueoflegends.com/api/versions.json';
   private currentVersion!: string;
 
+  public dataDragonUrl!: string;
+
   constructor(private http: HttpClient) {}
 
   public initialize(): Observable<any> {
@@ -16,12 +18,14 @@ export class VersionService {
     obs.subscribe((resp) => {
       const responseStr: string = resp.toString();
       this.currentVersion = responseStr.split(',')[0];
+
+      this.dataDragonUrl = `http://ddragon.leagueoflegends.com/cdn/${this.currentVersion}`;
     });
 
     return obs;
   }
 
-  public getVersion(): Observable<any> {
+  private getVersion(): Observable<any> {
     return this.http.get<any>(this.versionUrl);
   }
 
