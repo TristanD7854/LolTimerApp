@@ -44,10 +44,12 @@ https://developer.riotgames.com/docs/lol
     (images with names on mouse over, cd (aram cds different, one rune reduces them))  
 -display runes                                              DONE
 
--display length of the game (2mn delay with spectator/v4)
+-display length of the game (2mn delay with spectator/v4)   DONE
     No need to call the riot API for that every time.
     We call it once, save the current time, then increment it ourselves.
     F5 will ask it again.
+
+-language option in settings (change origin of json)
 
 -can click on summoners for timer   (clicking)  
     can click on it, default timer is -5, can click on +/++/-/-- buttons to add/remove 5/10sec  
