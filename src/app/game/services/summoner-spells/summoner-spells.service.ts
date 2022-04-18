@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { giveCooldown } from '../../helpers/cooldown-helper';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 import { Summ, Summs } from '../../models/summs.model';
+import { LanguageService } from '../language/language.service';
 import { RunesService } from '../runes/runes.service';
 import { SaveService } from '../save/save.service';
 import { VersionService } from '../version/version.service';
@@ -25,17 +26,18 @@ export class SummonerSpellsService {
     false
   );
 
-  // todo : fr_FR or en_US, makes service for that (+ settings)
-
   constructor(
     private http: HttpClient,
     private versionService: VersionService,
     private saveService: SaveService,
-    private runesService: RunesService
+    private runesService: RunesService,
+    private languageService: LanguageService
   ) {}
 
   public initialize() {
-    this.summsJsonUrl = `${this.versionService.dataDragonUrl}/data/en_US/summoner.json`;
+    this.summsJsonUrl = `${
+      this.versionService.dataDragonUrl
+    }/data/${this.languageService.getLocale()}/summoner.json`;
     this.isAram = this.saveService.getCurrentGameInfo().gameMode == 'ARAM';
 
     this.getSummsInfo().subscribe((resp) => {

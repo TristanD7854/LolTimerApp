@@ -16,7 +16,6 @@ export class GameInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.saveService.hasSavedCurrentGameInfoSubject.subscribe((resp) => {
-      console.log('resp = ' + resp);
       if (resp) this.startGameDuration();
     });
   }

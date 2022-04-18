@@ -10,6 +10,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { ParticipantSummsComponent } from './components/participant-summs/participant-summs.component';
 import { ParticipantRunesComponent } from './components/participant-runes/participant-runes.component';
 import { GameInfoComponent } from './components/game-info/game-info.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,11 @@ import { GameInfoComponent } from './components/game-info/game-info.component';
     ParticipantRunesComponent,
     GameInfoComponent
   ],
-  imports: [CommonModule, ParticipantRoutingModule, MatTooltipModule]
+  imports: [
+    CommonModule,
+    FormsModule,
+    ParticipantRoutingModule,
+    MatTooltipModule
+  ]
 })
 export class GameModule {}

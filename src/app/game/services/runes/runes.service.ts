@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatestWith, Observable } from 'rxjs';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 import { Rune, Runes } from '../../models/runes.model';
+import { LanguageService } from '../language/language.service';
 import { VersionService } from '../version/version.service';
 
 @Injectable({
@@ -32,11 +33,14 @@ export class RunesService {
 
   constructor(
     private http: HttpClient,
-    private versionService: VersionService
+    private versionService: VersionService,
+    private languageService: LanguageService
   ) {}
 
   public initialize() {
-    this.runesDDragonJsonUrl = `${this.versionService.dataDragonUrl}/data/en_US/runesReforged.json`;
+    this.runesDDragonJsonUrl = `${
+      this.versionService.dataDragonUrl
+    }/data/${this.languageService.getLocale()}/runesReforged.json`;
     this.runesCDragonJsonUrl = `https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/perks.json`;
 
     const runesDDragon$ = this.getrunesDDragonInfo();

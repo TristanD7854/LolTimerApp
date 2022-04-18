@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {
-  defaultSettings,
-  Settings
-} from '../../models/settings/settings.model';
+import { defaultSettings } from '../../constants/settings.constants';
+import { Settings } from '../../models/settings/settings.model';
 
 @Injectable({
   providedIn: 'root'

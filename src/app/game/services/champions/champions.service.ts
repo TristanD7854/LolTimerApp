@@ -3,6 +3,7 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { VersionService } from '../version/version.service';
 import { Champion, Passive, Spell } from '../../models/champion.model';
+import { LanguageService } from '../language/language.service';
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +24,14 @@ export class ChampionsService {
 
   constructor(
     private http: HttpClient,
-    private versionService: VersionService
+    private versionService: VersionService,
+    private languageService: LanguageService
   ) {}
 
   public initialize() {
-    this.allChampionJsonUrl = `${this.versionService.dataDragonUrl}/data/fr_FR/champion.json`;
+    this.allChampionJsonUrl = `${
+      this.versionService.dataDragonUrl
+    }/data/${this.languageService.getLocale()}/champion.json`;
 
     this.getAllChampionsInfo().subscribe((resp) => {
       this.allChampionInfo = resp;
@@ -58,7 +62,9 @@ export class ChampionsService {
   }
 
   public getChampion(championName: string): Observable<Champion> {
-    const championJsonUrl = `${this.versionService.dataDragonUrl}/data/fr_FR/champion/${championName}.json`;
+    const championJsonUrl = `${
+      this.versionService.dataDragonUrl
+    }/data/${this.languageService.getLocale()}/champion/${championName}.json`;
 
     return this.http.get<any>(championJsonUrl).pipe(
       map((response) => {

@@ -49,7 +49,7 @@ https://developer.riotgames.com/docs/lol
     We call it once, save the current time, then increment it ourselves.
     F5 will ask it again.
 
--language option in settings (change origin of json)
+-language option in settings (change origin of json)        DONE
 
 -can click on summoners for timer   (clicking)  
     can click on it, default timer is -5, can click on +/++/-/-- buttons to add/remove 5/10sec  
