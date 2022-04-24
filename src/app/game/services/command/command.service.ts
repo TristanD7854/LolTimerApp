@@ -7,6 +7,8 @@ import { SummonerSpell } from '../../models/summoner-spell.model';
 import { GameLengthService } from '../game-length/game-length.service';
 import { getTimeInSeconds } from '../../helpers/time-helper';
 
+const defaultDelay = 5;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +27,7 @@ export class CommandService {
 
     const position: Position | null = this.getPositionFullName(commandArr[1]);
     const summonerSpell: SummonerSpell | null = this.getSummonerSpellFullName(commandArr[0]);
-    const time: number | null = this.getTimeOfUse(commandArr[2]);
+    const time: number | null = commandArr[2] ? this.getTimeOfUse(commandArr[2]) : defaultDelay;
 
     if (position == null || summonerSpell == null || time == null) {
       return {
