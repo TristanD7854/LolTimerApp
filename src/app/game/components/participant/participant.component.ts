@@ -43,7 +43,7 @@ export class ParticipantComponent implements OnInit {
 
   constructor(
     private championsService: ChampionsService,
-    private settingsService: SettingsService,
+    public settingsService: SettingsService,
     public positionService: PositionService,
     public commandService: CommandService,
     private saveService: SaveService

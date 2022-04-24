@@ -6,7 +6,15 @@
     [checked]="showSummonerNamesChecked"
     (change)="showSummonerNamesChange()">
     <label for="showSummonerNames">Show summoner names</label>
+
+    <input 
+    type="checkbox" 
+    id="showRanks" 
+    name="showRanks"
+    [(ngModel)]="settingsService.settings.showRanks">
+    <label for="showRanks">Show ranks</label>
 </div>
+
 <div>
     <select [(ngModel)]="selectedLanguage" (change)="selectLanguage()" [value]="'fr'">
         <option *ngFor="let language of allLanguages" [ngValue]="language">{{language}}</option>

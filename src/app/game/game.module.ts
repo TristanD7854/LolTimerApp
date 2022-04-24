@@ -16,6 +16,7 @@ import { CommandLineComponent } from './components/command-line/command-line.com
 import { MinuteSecondPipe } from './pipes/minute-second.pipe';
 
 import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
+import { ParticipantRankComponent } from './components/participant-rank/participant-rank.component';
 
 export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
   showDelay: 1000,
@@ -37,7 +38,8 @@ export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
     GameInfoComponent,
     SummonerSpellComponent,
     CommandLineComponent,
-    MinuteSecondPipe
+    MinuteSecondPipe,
+    ParticipantRankComponent
   ],
   imports: [CommonModule, FormsModule, ParticipantRoutingModule, MatTooltipModule],
   providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults }]

@@ -8,6 +8,9 @@
     </div>
 
     <p>{{ (showSummonerNames$ | async) ? currentGameParticipant.summonerName : champion?.name }}</p>
+
+    <participant-rank *ngIf="this.settingsService.settings.showRanks" [currentGameParticipant]="currentGameParticipant"></participant-rank>
+
     <img [src]="champion?.image" [alt]="champion?.name" width="40" height="40"
         matTooltip="{{ champion?.name }}"
         matTooltipClass="champion-name-tooltip">

@@ -13,10 +13,7 @@ export class RiotApiService {
 
   constructor(private http: HttpClient) {}
 
-  public getSummonerInformation(
-    summonerName: string,
-    mock: boolean
-  ): Observable<SummonerDTO> {
+  public getSummonerInformation(summonerName: string, mock: boolean): Observable<SummonerDTO> {
     let summonerV4Url = `${this.backEndUrl}/summoner/?summonerName=${summonerName}`;
     if (mock) {
       summonerV4Url = `${this.backEndUrl}/summoner/mock?summonerName=${summonerName}`;
@@ -24,12 +21,8 @@ export class RiotApiService {
 
     return this.http.get<SummonerDTO>(summonerV4Url).pipe(
       catchError((err: HttpErrorResponse) => {
-        console.log(
-          'In getSummonerInformation, err.error = ' + JSON.stringify(err.error)
-        );
-        if (
-          err.error.status.message === 'Data not found - summoner not found'
-        ) {
+        console.log('In getSummonerInformation, err.error = ' + JSON.stringify(err.error));
+        if (err.error.status.message === 'Data not found - summoner not found') {
           return throwError(() => new Error(ErrorMessages.summonerNotFound));
         }
 
@@ -50,12 +43,8 @@ export class RiotApiService {
     return this.http.get<CurrentGameInfo>(activeGameSpectatorV4Url).pipe(
       catchError((err: HttpErrorResponse) => {
         //console.log('In getCurrentGameInfo, err.error = ' + JSON.stringify(err.error));
-        if (
-          err.error.status.message === ErrorMessages.summonerEncryptedIdNotFound
-        ) {
-          return throwError(
-            () => new Error(ErrorMessages.summonerEncryptedIdNotFound)
-          );
+        if (err.error.status.message === ErrorMessages.summonerEncryptedIdNotFound) {
+          return throwError(() => new Error(ErrorMessages.summonerEncryptedIdNotFound));
           // No idea how to manage it
         }
         if (err.error.status.message === 'Data not found') {

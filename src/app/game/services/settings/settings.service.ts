@@ -7,10 +7,8 @@ import { Settings } from '../../models/settings/settings.model';
   providedIn: 'root'
 })
 export class SettingsService {
-  private settings: Settings = defaultSettings;
-  public settingsSubject: BehaviorSubject<Settings> = new BehaviorSubject(
-    defaultSettings
-  );
+  public settings: Settings = defaultSettings;
+  public settingsSubject: BehaviorSubject<Settings> = new BehaviorSubject(defaultSettings);
 
   public saveSettings(settingsProperty: string, value: boolean) {
     let isDefined = false;

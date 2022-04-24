@@ -15,7 +15,7 @@ export class SettingsComponent {
   public selectedLanguage: Language = this.languageService.language;
   public allLanguages = existingLanguages;
 
-  constructor(private settingsService: SettingsService, private languageService: LanguageService) {}
+  constructor(public settingsService: SettingsService, private languageService: LanguageService) {}
 
   public ngOnInit(): void {
     this.settingsService.settingsSubject.pipe(first()).subscribe((res: Settings) => {

@@ -61,10 +61,19 @@ https://developer.riotgames.com/docs/lol
 -display last seconds the summs are not available           DONE
     (highlight summs with timer + colors)  
 
--display ranks
+-display ranks                                              DONE
     can hide them
 
--display tower golds (independant of the game), global and local
+-display tower golds 
+    (independant of the game), global and local
+
+-display gold by level ?
+    levels give stats that can be converted to gold (most of them are useless but still)
+    search it at least
+
+-add unit tests + cypress (E2E)
+
+-clean all (see todo + observable overkill)
 
 ### OWN API - For runes/champions/items stats (like champion spells damage ratios)
 
@@ -180,8 +189,6 @@ I don't think it is worth the effort
 Manage Yuumi W passive in frontend app, same for concentration lointaine passive (call ownapi to get the value)
 
 ### LCU API + ownAPI
-
--add unit tests + cypress (E2E)
 
 -Use lcu api to create a lot of components, and update them at 5sec interval.
 If lcu can't be called (or the user doesn't want to), don't show the related components
