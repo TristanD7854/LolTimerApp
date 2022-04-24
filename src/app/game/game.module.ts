@@ -15,6 +15,16 @@ import { SummonerSpellComponent } from './components/summoner-spell/summoner-spe
 import { CommandLineComponent } from './components/command-line/command-line.component';
 import { MinuteSecondPipe } from './pipes/minute-second.pipe';
 
+import { MAT_TOOLTIP_DEFAULT_OPTIONS, MatTooltipDefaultOptions } from '@angular/material/tooltip';
+
+export const myCustomTooltipDefaults: MatTooltipDefaultOptions = {
+  showDelay: 1000,
+  hideDelay: 0,
+  touchendHideDelay: 1000,
+  position: 'below',
+  disableTooltipInteractivity: true
+};
+
 @NgModule({
   declarations: [
     ParticipantListComponent,
@@ -29,6 +39,7 @@ import { MinuteSecondPipe } from './pipes/minute-second.pipe';
     CommandLineComponent,
     MinuteSecondPipe
   ],
-  imports: [CommonModule, FormsModule, ParticipantRoutingModule, MatTooltipModule]
+  imports: [CommonModule, FormsModule, ParticipantRoutingModule, MatTooltipModule],
+  providers: [{ provide: MAT_TOOLTIP_DEFAULT_OPTIONS, useValue: myCustomTooltipDefaults }]
 })
 export class GameModule {}

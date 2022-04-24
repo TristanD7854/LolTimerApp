@@ -1,4 +1,4 @@
-<div>
+<div [ngClass]="{'soon-up': (timeLeft < summSoonUpTime && timeLeft < summ.cooldown)}">
     <button (click)="addTime(-10)">
         <p>--</p>
     </button>
@@ -12,8 +12,6 @@
         width="30" 
         height="30"
         [style.opacity]="summOpacity"
-        matTooltip="{{ summ?.name }} | {{ summ?.cooldown }}"
-        matTooltipPosition="below"
         (click)="useSumm(5)">
 
     <button (click)="addTime(5)">
@@ -24,7 +22,6 @@
     </button>
 </div>
     
-<p  matTooltip="Lucidity boots affect this"
-    matTooltipPosition="below">
+<p [ngClass]="{'p-soon-up': (timeLeft < summSoonUpTime && timeLeft < summ.cooldown)}">
     {{timeLeft}}
 </p>

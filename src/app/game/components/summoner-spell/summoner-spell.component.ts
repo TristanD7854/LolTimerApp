@@ -17,6 +17,7 @@ export class SummonerSpellComponent implements OnInit, OnDestroy {
   public summ!: Summ;
   public timeLeft!: number;
   public summOpacity = '100%';
+  public readonly summSoonUpTime = 20;
 
   private canStartTimer = true; // to avoid concurrency issue
   private interval$: Observable<number> = interval(1000);

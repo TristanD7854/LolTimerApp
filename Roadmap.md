@@ -58,8 +58,8 @@ https://developer.riotgames.com/docs/lol
     exple : 
         "f mid 12.15"  -> find who is mid
 
--display last seconds the summs are not available (highlight summs with timer + colors)  
-    display how much time delayed (with +/- buttons)
+-display last seconds the summs are not available           DONE
+    (highlight summs with timer + colors)  
 
 -display ranks
     can hide them
