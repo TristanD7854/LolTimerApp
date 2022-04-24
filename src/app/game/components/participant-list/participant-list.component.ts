@@ -2,10 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { useBackendMockData } from '../../constants/mock.constants';
 import { CustomErrorMessage, ErrorMessages } from '../../models/errors/errors';
-import {
-  CurrentGameInfo,
-  CurrentGameParticipant
-} from '../../models/riot-api/spectator.model';
+import { CurrentGameInfo, CurrentGameParticipant } from '../../models/riot-api/spectator.model';
+import { Team } from '../../models/team.model';
 import { RiotApiService } from '../../services/riot-api/riot-api.service';
 import { SaveService } from '../../services/save/save.service';
 
@@ -16,8 +14,8 @@ import { SaveService } from '../../services/save/save.service';
 })
 export class ParticipantListComponent implements OnInit {
   public currentGameInfo!: CurrentGameInfo;
-  public allyTeam!: CurrentGameParticipant[];
-  public enemyTeam!: CurrentGameParticipant[];
+  public allyTeam!: Team;
+  public enemyTeam!: Team;
 
   constructor(
     private saveService: SaveService,
@@ -50,6 +48,7 @@ export class ParticipantListComponent implements OnInit {
             this.router.navigateByUrl('');
           } else {
             this.saveService.setCurrentGameInfo(res);
+            this.saveService.setMainParticipant(summonerName);
             this.loadInfo();
           }
         });
@@ -62,11 +61,22 @@ export class ParticipantListComponent implements OnInit {
   }
 
   private createTeams(): void {
-    this.allyTeam = this.currentGameInfo.participants.filter(
+    const allyTeamMembers: CurrentGameParticipant[] = this.currentGameInfo.participants.filter(
       (participant: CurrentGameParticipant) => participant.teamId == 200
     );
-    this.enemyTeam = this.currentGameInfo.participants.filter(
+
+    this.allyTeam = {
+      members: allyTeamMembers,
+      isAllyTeam: true
+    };
+
+    const enemyTeamMembers: CurrentGameParticipant[] = this.currentGameInfo.participants.filter(
       (participant: CurrentGameParticipant) => participant.teamId == 100
     );
+
+    this.enemyTeam = {
+      members: enemyTeamMembers,
+      isAllyTeam: false
+    };
   }
 }

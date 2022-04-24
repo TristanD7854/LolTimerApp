@@ -1,0 +1,10 @@
+<div class="form-container">
+    <p>
+        {{ commandMsgAfterBeingProcessed && commandMsgAfterBeingProcessed.error && commandMsgAfterBeingProcessed.error + ' : ' }} {{ commandMsgAfterBeingProcessed?.command }}
+    </p>
+    <form (ngSubmit)="onSubmitCommand()">
+        <label for="commandInput">Command : </label>
+        <input id="commandInput" name="command" type="text" [(ngModel)]="command">
+        <button type="submit">Apply command</button>
+    </form>
+</div>

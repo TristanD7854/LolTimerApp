@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval } from 'rxjs';
-import { SaveService } from '../../services/save/save.service';
+import { GameLengthService } from '../../services/game-length/game-length.service';
 
 @Component({
   selector: 'game-info',
@@ -8,27 +7,9 @@ import { SaveService } from '../../services/save/save.service';
   styleUrls: ['./game-info.component.scss']
 })
 export class GameInfoComponent implements OnInit {
-  constructor(private saveService: SaveService) {}
-
-  public gameLength!: number;
-  private maxGameDuration = 4500; // 1h15mn
-  private spectatorDelay = 120;
+  constructor(public gameLengthService: GameLengthService) {}
 
   ngOnInit(): void {
-    this.saveService.hasSavedCurrentGameInfoSubject.subscribe((resp) => {
-      if (resp) this.startGameDuration();
-    });
-  }
-
-  private startGameDuration(): void {
-    this.gameLength =
-      this.saveService.getCurrentGameInfo().gameLength + this.spectatorDelay;
-
-    const interval$ = interval(1000);
-    setTimeout(() => {
-      interval$.subscribe(() => {
-        this.gameLength += 1;
-      });
-    }, this.maxGameDuration);
+    this.gameLengthService.start();
   }
 }

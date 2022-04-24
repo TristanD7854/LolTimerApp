@@ -54,12 +54,12 @@ https://developer.riotgames.com/docs/lol
 -can click on summoners for timer   (clicking)              DONE
     can click on it, default timer is -5, can click on +/++/-/-- buttons to add/remove 5/10sec  
 
--input field to time summoners      (writing)  
-    exple : "f mid 12.15"  
-    Possible to cancel last command with "cancel" or by clicking it (3 last commands displayed)  
-        timer of 5sec after canceling it, possible to uncancel  
-    Manage errors  
+-input field to time summoners      (writing)               DONE
+    exple : 
+        "f mid 12.15"  -> find who is mid
+
 -display last seconds the summs are not available (highlight summs with timer + colors)  
+    display how much time delayed (with +/- buttons)
 
 -display ranks
     can hide them
@@ -194,7 +194,10 @@ If lcu can't be called (or the user doesn't want to), don't show the related com
 
 -display champion levels
 
--display game length
+-display game length with lcu
+
+-setup initial champion positions in the game 
+    ("position": "NONE" in ARAM, but should be ok for classic)
 
 -display minion stats (hp, ad, golds)
     calculate with game length
@@ -228,7 +231,7 @@ If lcu can't be called (or the user doesn't want to), don't show the related com
 
 -display total mana cost of full combo
 
--calculates if rabadon or void better against every enemy champ
+-calculates if rabadon or void better against every enemy champ, same for guinsoo/IE
 
 -display killing sprees (how many kills since last death)
 

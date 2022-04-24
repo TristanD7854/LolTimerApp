@@ -12,6 +12,8 @@ import { ParticipantRunesComponent } from './components/participant-runes/partic
 import { GameInfoComponent } from './components/game-info/game-info.component';
 import { FormsModule } from '@angular/forms';
 import { SummonerSpellComponent } from './components/summoner-spell/summoner-spell.component';
+import { CommandLineComponent } from './components/command-line/command-line.component';
+import { MinuteSecondPipe } from './pipes/minute-second.pipe';
 
 @NgModule({
   declarations: [
@@ -23,13 +25,10 @@ import { SummonerSpellComponent } from './components/summoner-spell/summoner-spe
     ParticipantSummsComponent,
     ParticipantRunesComponent,
     GameInfoComponent,
-    SummonerSpellComponent
+    SummonerSpellComponent,
+    CommandLineComponent,
+    MinuteSecondPipe
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ParticipantRoutingModule,
-    MatTooltipModule
-  ]
+  imports: [CommonModule, FormsModule, ParticipantRoutingModule, MatTooltipModule]
 })
 export class GameModule {}

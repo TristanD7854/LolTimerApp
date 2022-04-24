@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { interval, Observable, Subscription } from 'rxjs';
+import { interval, Observable, Subject, Subscription } from 'rxjs';
 import { Summ } from '../../models/summs.model';
 
 @Component({
@@ -10,6 +10,9 @@ import { Summ } from '../../models/summs.model';
 export class SummonerSpellComponent implements OnInit, OnDestroy {
   @Input()
   public summ$!: Observable<Summ>;
+
+  @Input()
+  public useSummSubject!: Subject<number>;
 
   public summ!: Summ;
   public timeLeft!: number;
@@ -23,6 +26,10 @@ export class SummonerSpellComponent implements OnInit, OnDestroy {
     this.summ$.subscribe((summ) => {
       this.summ = summ;
       this.timeLeft = this.summ.cooldown;
+    });
+
+    this.useSummSubject.subscribe((time) => {
+      this.useSumm(time);
     });
   }
 

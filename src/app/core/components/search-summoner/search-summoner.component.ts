@@ -2,10 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { useBackendMockData } from 'src/app/game/constants/mock.constants';
-import {
-  CustomErrorMessage,
-  ErrorMessages
-} from 'src/app/game/models/errors/errors';
+import { CustomErrorMessage, ErrorMessages } from 'src/app/game/models/errors/errors';
 import { RiotApiService } from 'src/app/game/services/riot-api/riot-api.service';
 import { SaveService } from 'src/app/game/services/save/save.service';
 
@@ -28,10 +25,7 @@ export class SearchSummonerComponent implements OnDestroy {
     // call service with summonerName
     this.subscription.add(
       this.riotApiService
-        .getCurrentGameInfoWithSummonerName(
-          this.summonerName,
-          useBackendMockData
-        )
+        .getCurrentGameInfoWithSummonerName(this.summonerName, useBackendMockData)
         .subscribe((res) => {
           //console.log('res = ' + JSON.stringify(res));
 
@@ -46,6 +40,7 @@ export class SearchSummonerComponent implements OnDestroy {
             }
           } else {
             this.saveService.setCurrentGameInfo(res);
+            this.saveService.setMainParticipant(this.summonerName);
             this.router.navigateByUrl(`game/${this.summonerName}`);
           }
         })

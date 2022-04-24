@@ -22,9 +22,7 @@ export class SummonerSpellsService {
   private summsInfo: any;
   private isAram = false;
 
-  public isReady: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
+  public isReady: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient,
@@ -35,9 +33,8 @@ export class SummonerSpellsService {
   ) {}
 
   public initialize() {
-    this.summsJsonUrl = `${
-      this.versionService.dataDragonUrl
-    }/data/${this.languageService.getLocale()}/summoner.json`;
+    this.summsJsonUrl = `${this.versionService.dataDragonUrl}/data/en_US/summoner.json`;
+    // we don't use LanguageService as we would have to consider "Saut eclair" instead of Flash when typing "f top"
     this.isAram = this.saveService.getCurrentGameInfo().gameMode == 'ARAM';
 
     this.getSummsInfo().subscribe((resp) => {
@@ -62,9 +59,7 @@ export class SummonerSpellsService {
 
     for (const summonerSpell in this.summsInfo.data) {
       // verify that its own property
-      if (
-        Object.prototype.hasOwnProperty.call(this.summsInfo.data, summonerSpell)
-      ) {
+      if (Object.prototype.hasOwnProperty.call(this.summsInfo.data, summonerSpell)) {
         if (this.summsInfo.data[summonerSpell].key == participant.spell1Id) {
           const summonerSpellData = this.summsInfo.data[summonerSpell];
           summ1 = {

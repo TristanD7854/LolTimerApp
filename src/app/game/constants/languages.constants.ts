@@ -14,3 +14,16 @@ export type Locale = 'fr_FR' | 'en_US';
 export const existingLanguages: Language[] = ['fr', 'en'];
 
 // todo : clean this bordel, too much work to add a single language
+
+export declare const LOCALES: [
+  {
+    code: 'fr_FR';
+    lang: 'fr';
+  },
+  {
+    code: 'en_US';
+    lang: 'en';
+  }
+];
+
+export declare type LocaleCode = typeof LOCALES[number]['code'];

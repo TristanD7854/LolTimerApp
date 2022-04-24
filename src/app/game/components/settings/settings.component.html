@@ -8,7 +8,7 @@
     <label for="showSummonerNames">Show summoner names</label>
 </div>
 <div>
-    <select [(ngModel)]="selectedLanguage" (change)="selected()" [value]="'fr'">
+    <select [(ngModel)]="selectedLanguage" (change)="selectLanguage()" [value]="'fr'">
         <option *ngFor="let language of allLanguages" [ngValue]="language">{{language}}</option>
     </select>
 </div>
