@@ -3,8 +3,7 @@
     type="checkbox" 
     id="showSummonerNames" 
     name="showSummonerNames"
-    [checked]="showSummonerNamesChecked"
-    (change)="showSummonerNamesChange()">
+    [(ngModel)]="settingsService.settings.showSummonerNames">
     <label for="showSummonerNames">Show summoner names</label>
 
     <input 

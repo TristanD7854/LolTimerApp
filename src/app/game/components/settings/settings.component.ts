@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { first, Observable, of } from 'rxjs';
-import { existingLanguages, Language, languages } from '../../constants/languages.constants';
-import { Settings } from '../../models/settings/settings.model';
+import { Component } from '@angular/core';
+import { existingLanguages, Language } from '../../constants/languages.constants';
 import { LanguageService } from '../../services/language/language.service';
 import { SettingsService } from '../../services/settings/settings.service';
 
@@ -11,22 +9,10 @@ import { SettingsService } from '../../services/settings/settings.service';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent {
-  public showSummonerNamesChecked!: boolean;
   public selectedLanguage: Language = this.languageService.language;
   public allLanguages = existingLanguages;
 
   constructor(public settingsService: SettingsService, private languageService: LanguageService) {}
-
-  public ngOnInit(): void {
-    this.settingsService.settingsSubject.pipe(first()).subscribe((res: Settings) => {
-      this.showSummonerNamesChecked = res.showSummonerNames;
-    });
-  }
-
-  showSummonerNamesChange(): void {
-    this.showSummonerNamesChecked = !this.showSummonerNamesChecked;
-    this.settingsService.saveSettings('showSummonerNames', this.showSummonerNamesChecked);
-  }
 
   public selectLanguage(): void {
     this.languageService.setLanguage(this.selectedLanguage);

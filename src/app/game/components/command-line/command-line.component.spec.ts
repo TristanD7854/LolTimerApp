@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { CommandLineComponent } from './command-line.component';
 
@@ -8,7 +9,8 @@ describe('CommandLineComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CommandLineComponent]
+      declarations: [CommandLineComponent],
+      imports: [FormsModule]
     }).compileComponents();
   });
 

@@ -22,7 +22,7 @@ export class SummonerSpellsService {
   private summsInfo: any;
   private isAram = false;
 
-  public isReady: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isReady$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient,
@@ -39,7 +39,7 @@ export class SummonerSpellsService {
 
     this.getSummsInfo().subscribe((resp) => {
       this.summsInfo = resp;
-      this.isReady.next(true);
+      this.isReady$.next(true);
     });
   }
 

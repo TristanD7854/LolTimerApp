@@ -1,9 +1,16 @@
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
+import { Team } from '../../models/team.model';
 import { ChampionsService } from '../../services/champions/champions.service';
 
 import { ParticipantComponent } from './participant.component';
+import { MockComponent } from 'ng-mocks';
+import { ParticipantRunesComponent } from '../participant-runes/participant-runes.component';
+import { ParticipantSummsComponent } from '../participant-summs/participant-summs.component';
+import { of } from 'rxjs';
+import { FormsModule } from '@angular/forms';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('ParticipantComponent', () => {
   let component: ParticipantComponent;
@@ -11,14 +18,20 @@ describe('ParticipantComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ParticipantComponent],
+      declarations: [
+        ParticipantComponent,
+        MockComponent(ParticipantRunesComponent),
+        MockComponent(ParticipantSummsComponent)
+      ],
+      imports: [FormsModule, MatTooltipModule],
       providers: [
         HttpClient,
         HttpHandler,
         {
           provide: ChampionsService,
           useValue: {
-            getChampionName: () => 'Aatrox'
+            getChampionName: () => 'Aatrox',
+            isReady$: of(true)
           }
         }
       ]
@@ -46,7 +59,16 @@ describe('ParticipantComponent', () => {
         perkSubStyle: 8300
       }
     };
+
+    // todo : isAllyTeam false, enemyTeamSwapSubject calls, ... Bref, tester pour de vrai
+    const team: Team = {
+      members: [mockCurrentGameParticipant],
+      isAllyTeam: true
+    };
+
     component.currentGameParticipant = mockCurrentGameParticipant;
+    component.team = team;
+    component.positionIndex = 0;
 
     fixture.detectChanges();
   });

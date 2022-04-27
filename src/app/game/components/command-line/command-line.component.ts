@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProcessedCommand } from '../../models/command.model';
 import { CommandService } from '../../services/command/command.service';
 

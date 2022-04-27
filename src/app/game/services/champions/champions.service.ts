@@ -18,9 +18,7 @@ export class ChampionsService {
   private allChampionJsonUrl!: string;
   private allChampionInfo: any;
 
-  public isReady: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
+  public isReady$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient,
@@ -35,7 +33,7 @@ export class ChampionsService {
 
     this.getAllChampionsInfo().subscribe((resp) => {
       this.allChampionInfo = resp;
-      this.isReady.next(true);
+      this.isReady$.next(true);
     });
   }
 
@@ -46,12 +44,7 @@ export class ChampionsService {
   public getChampionName(id: number): string {
     for (const championName in this.allChampionInfo.data) {
       // verify that its own property
-      if (
-        Object.prototype.hasOwnProperty.call(
-          this.allChampionInfo.data,
-          championName
-        )
-      ) {
+      if (Object.prototype.hasOwnProperty.call(this.allChampionInfo.data, championName)) {
         if (this.allChampionInfo.data[championName].key == id) {
           return championName;
         }

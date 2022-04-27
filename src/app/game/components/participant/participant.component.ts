@@ -39,7 +39,6 @@ export class ParticipantComponent implements OnInit {
 
   public allPositions!: Position[];
   public champion!: Champion;
-  public showSummonerNames$!: Observable<boolean>;
 
   constructor(
     private championsService: ChampionsService,
@@ -50,7 +49,7 @@ export class ParticipantComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.championsService.isReady.subscribe((resp) => {
+    this.championsService.isReady$.subscribe((resp) => {
       if (resp) this.loadInfo();
     });
 
@@ -83,7 +82,6 @@ export class ParticipantComponent implements OnInit {
 
   private loadInfo(): void {
     this.allPositions = this.positionService.getAllPositions();
-    //
 
     const championName = this.championsService.getChampionName(
       this.currentGameParticipant.championId
@@ -93,12 +91,6 @@ export class ParticipantComponent implements OnInit {
       this.saveService.mainParticipantName == this.currentGameParticipant.summonerName;
 
     this.position = this.positionService.getPosition(this.positionIndex);
-
-    this.showSummonerNames$ = this.settingsService.settingsSubject.pipe(
-      map((settings: Settings) => {
-        return settings.showSummonerNames;
-      })
-    );
 
     this.championsService.getChampion(championName).subscribe((resp: Champion) => {
       //console.log('champion returned = ' + JSON.stringify(resp));

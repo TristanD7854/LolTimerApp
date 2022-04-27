@@ -64,24 +64,23 @@ https://developer.riotgames.com/docs/lol
 -display ranks                                              DONE
     can hide them
 
--display tower golds 
-    (independant of the game), global and local
+-fix+add unit tests + cypress (E2E)
 
--display gold by level ?
-    levels give stats that can be converted to gold (most of them are useless but still)
-    search it at least
+-clean all (see todo + observable overkill, + $)
 
--add unit tests + cypress (E2E)
-
--clean all (see todo + observable overkill)
+-Try it in an aram game. 
+    See if there's easy upgrades todo
+    (reminder : css will be after lcu)
 
 ### OWN API - For runes/champions/items stats (like champion spells damage ratios)
+
+Cache the data (in the proxy server ?), and update the json only when new version comes out, or requesting new data (for example first time we request the json for Qiyana in patch 12.6.1)
+
+Fill a todo on LolTimerProxyServer, think a lot before creating route and creating json data !
 
 Think about all that. Wouldn't it be simpler/easier if I just save all the json data + map them for my needs ?
 I'd like to have a script that scrap the lolwiki for champion damgage, and then be able to request it like so :
 myapi/akali/spells -> { "q": "{10/20/30/40/50} + adRatio: 30%" ...}
-
-Cache the data (in the proxy server ?), and update the json only when new version comes out, or requesting new data (for example first time we request the json for Qiyana in patch 12.6.1)
 
 Create routes for this App :
     -routes for runes/summs. To avoid looping through all the items to get rune.id == perkId
@@ -218,6 +217,9 @@ If lcu can't be called (or the user doesn't want to), don't show the related com
 
 -display total stats (advanced ones too)
     consider stackings (garen w passive, malphite w passive), items, runes, ...
+    Also consider that you don't gain as much stats from lvl 1 to 2, than 17 to 18
+    Display the gold gained by the next level from stats ?
+    See https://www.reddit.com/r/leagueoflegends/comments/5umxcv/the_average_gold_value_gained_per_level_is_53291/
 
 -display healing items/runes + anti-healing
 
@@ -255,6 +257,9 @@ Estimations (search official algo if they exist)
     platings  
     gp/tf passive, pyke ult  
     orn passive items bonus gold : 1k/item
+
+-display tower golds (https://leagueoflegends.fandom.com/wiki/Turret#Outer_turret)
+    (independant of the game), global and local
 
 -estimate personal shutdowns in-game + how-much-gold someone gives (same for assist kill)
     [wiki](https://leagueoflegends.fandom.com/wiki/Kill)

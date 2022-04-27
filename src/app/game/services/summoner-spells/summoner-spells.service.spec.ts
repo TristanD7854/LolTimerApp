@@ -1,4 +1,6 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { SummonerSpellsService } from './summoner-spells.service';
 
@@ -6,7 +8,10 @@ describe('SummonerSpellsService', () => {
   let service: SummonerSpellsService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
+      providers: [HttpClient, HttpHandler]
+    });
     service = TestBed.inject(SummonerSpellsService);
   });
 

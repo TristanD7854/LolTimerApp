@@ -29,7 +29,7 @@ export class ParticipantSummsComponent implements OnInit {
   constructor(private summonerSpellsService: SummonerSpellsService) {}
 
   public ngOnInit(): void {
-    this.summonerSpellsService.isReady.subscribe((resp) => {
+    this.summonerSpellsService.isReady$.subscribe((resp) => {
       if (resp) this.loadSummonerSpells();
     });
   }

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { defaultSettings } from '../../constants/settings.constants';
 import { Settings } from '../../models/settings/settings.model';
 
@@ -8,7 +7,6 @@ import { Settings } from '../../models/settings/settings.model';
 })
 export class SettingsService {
   public settings: Settings = defaultSettings;
-  public settingsSubject: BehaviorSubject<Settings> = new BehaviorSubject(defaultSettings);
 
   public saveSettings(settingsProperty: string, value: boolean) {
     let isDefined = false;
@@ -25,7 +23,5 @@ export class SettingsService {
       ...this.settings,
       [settingsProperty]: value
     };
-
-    this.settingsSubject.next(this.settings);
   }
 }

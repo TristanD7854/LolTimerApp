@@ -27,9 +27,7 @@ export class RunesService {
   private runesCDragonInfo: any;
   private cosmicInsightId = 8347; //todolongafter : don't stock that, just search through the rune for "Summoner Spell Haste"
 
-  public isReady: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
+  public isReady$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
     private http: HttpClient,
@@ -52,7 +50,7 @@ export class RunesService {
         if (runesDDragon && runesCDragon) {
           this.runesDDragonInfo = runesDDragon;
           this.runesCDragonInfo = runesCDragon;
-          this.isReady.next(true);
+          this.isReady$.next(true);
         }
       });
   }

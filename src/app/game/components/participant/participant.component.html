@@ -7,7 +7,7 @@
         </select>
     </div>
 
-    <p>{{ (showSummonerNames$ | async) ? currentGameParticipant.summonerName : champion?.name }}</p>
+    <p>{{ this.settingsService.settings.showSummonerNames ? currentGameParticipant.summonerName : champion?.name }}</p>
 
     <participant-rank *ngIf="this.settingsService.settings.showRanks" [currentGameParticipant]="currentGameParticipant"></participant-rank>
 

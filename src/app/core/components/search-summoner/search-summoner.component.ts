@@ -21,7 +21,7 @@ export class SearchSummonerComponent implements OnDestroy {
     private saveService: SaveService
   ) {}
 
-  onSubmitForm(): void {
+  public onSubmitForm(): void {
     // call service with summonerName
     this.subscription.add(
       this.riotApiService

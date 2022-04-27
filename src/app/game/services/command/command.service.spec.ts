@@ -10,6 +10,8 @@ describe('CommandService', () => {
     service = TestBed.inject(CommandService);
   });
 
+  // todo : lots of tests for getTimeOfUse
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
