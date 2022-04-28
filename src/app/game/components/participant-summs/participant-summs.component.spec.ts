@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { ParticipantSummsComponent } from './participant-summs.component';
+import { MockComponent } from 'ng-mocks';
+import { SummonerSpellComponent } from '../summoner-spell/summoner-spell.component';
 
 describe('ParticipantSummsComponent', () => {
   let component: ParticipantSummsComponent;
@@ -10,7 +12,7 @@ describe('ParticipantSummsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ParticipantSummsComponent],
+      declarations: [ParticipantSummsComponent, MockComponent(SummonerSpellComponent)],
       imports: [RouterTestingModule],
       providers: [HttpClient, HttpHandler]
     }).compileComponents();

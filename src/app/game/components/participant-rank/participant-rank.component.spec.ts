@@ -2,9 +2,9 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ParticipantRankComponent } from './participant-rank.component';
-import { RankService } from '../../services/rank/rank.service';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 import { of } from 'rxjs';
+import { RankApiService } from '../../services/riot-api/rank-api/rank-api.service';
 
 describe('ParticipantRankComponent', () => {
   let component: ParticipantRankComponent;
@@ -17,7 +17,7 @@ describe('ParticipantRankComponent', () => {
         HttpClient,
         HttpHandler,
         {
-          provide: RankService,
+          provide: RankApiService,
           useValue: {
             getRankInformation: () => of(true)
           }

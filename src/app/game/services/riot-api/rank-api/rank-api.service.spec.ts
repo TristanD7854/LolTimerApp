@@ -2,17 +2,17 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { RiotApiService } from './riot-api.service';
+import { RankApiService } from './rank-api.service';
 
-describe('RiotApiService', () => {
-  let service: RiotApiService;
+describe('RankService', () => {
+  let service: RankApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       providers: [HttpClient, HttpHandler]
     });
-    service = TestBed.inject(RiotApiService);
+    service = TestBed.inject(RankApiService);
   });
 
   it('should be created', () => {

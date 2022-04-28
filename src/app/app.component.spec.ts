@@ -2,12 +2,14 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { MockComponent } from 'ng-mocks';
+import { HeaderComponent } from './core/components/header/header.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      declarations: [AppComponent, MockComponent(HeaderComponent)],
       imports: [RouterTestingModule],
-      declarations: [AppComponent],
       providers: [HttpClient, HttpHandler]
     }).compileComponents();
   });

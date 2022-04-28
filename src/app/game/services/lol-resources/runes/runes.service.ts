@@ -1,10 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, combineLatestWith, Observable } from 'rxjs';
-import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
-import { Rune, Runes } from '../../models/runes.model';
-import { LanguageService } from '../language/language.service';
-import { VersionService } from '../version/version.service';
+import { BehaviorSubject, combineLatestWith } from 'rxjs';
+import { CurrentGameParticipant } from 'src/app/game/models/riot-api/spectator.model';
+import { Rune, Runes } from 'src/app/game/models/runes.model';
+import { LolResourcesService } from '../lol-resources.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,28 +19,17 @@ export class RunesService {
   https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods/statmodscdrscalingicon.png
   */
 
-  private runesDDragonJsonUrl!: string;
-  private runesCDragonJsonUrl!: string;
   private runesDDragonInfo: any;
   private runesCDragonInfo: any;
   private cosmicInsightId = 8347; //todolongafter : don't stock that, just search through the rune for "Summoner Spell Haste"
 
   public isReady$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor(
-    private http: HttpClient,
-    private versionService: VersionService,
-    private languageService: LanguageService
-  ) {}
+  constructor(private lolResourcesService: LolResourcesService) {}
 
   public initialize() {
-    this.runesDDragonJsonUrl = `${
-      this.versionService.dataDragonUrl
-    }/data/${this.languageService.getLocale()}/runesReforged.json`;
-    this.runesCDragonJsonUrl = `https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/perks.json`;
-
-    const runesDDragon$ = this.getrunesDDragonInfo();
-    const runesCDragon$ = this.getrunesCDragonInfo();
+    const runesDDragon$ = this.lolResourcesService.callDDragonCdnData('runesReforged.json');
+    const runesCDragon$ = this.lolResourcesService.callCDragonCdn('perks.json');
 
     runesDDragon$
       .pipe(combineLatestWith(runesCDragon$))
@@ -53,14 +40,6 @@ export class RunesService {
           this.isReady$.next(true);
         }
       });
-  }
-
-  public getrunesDDragonInfo(): Observable<any> {
-    return this.http.get<any>(this.runesDDragonJsonUrl);
-  }
-
-  public getrunesCDragonInfo(): Observable<any> {
-    return this.http.get<any>(this.runesCDragonJsonUrl);
   }
 
   public hasCosmicInsight(participant: CurrentGameParticipant): boolean {
@@ -74,7 +53,7 @@ export class RunesService {
           if (rune.id == perkId) {
             pathToAddRune.push({
               name: rune.name,
-              image: 'https://ddragon.canisback.com/img/' + rune.icon
+              image: this.lolResourcesService.getDDragonCanisbackImageUrl(rune.icon)
             });
             return;
           }
@@ -88,9 +67,9 @@ export class RunesService {
       if (rune.id == perkId) {
         statRunes.push({
           name: rune.name,
-          image:
-            'https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/perk-images/statmods/' +
-            rune.iconPath.match(/\w+\.png/g)[0].toLowerCase()
+          image: this.lolResourcesService.geCDragonImageUrl(
+            'perk-images/statmods/' + rune.iconPath.match(/\w+\.png/g)[0].toLowerCase()
+          )
         });
         return;
       }
@@ -101,8 +80,6 @@ export class RunesService {
     const primaryPath: Rune[] = [];
     const secondaryPath: Rune[] = [];
     const statRunes: Rune[] = [];
-
-    //for (const summonerSpell in this.runesDDragonInfo.data)
 
     let runePosition = 1;
     for (const perkId of participant.perks.perkIds) {

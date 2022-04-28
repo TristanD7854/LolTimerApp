@@ -1,10 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { useBackendMockData } from 'src/app/game/constants/mock.constants';
 import { CustomErrorMessage, ErrorMessages } from 'src/app/game/models/errors/errors';
-import { RiotApiService } from 'src/app/game/services/riot-api/riot-api.service';
 import { SaveService } from 'src/app/game/services/save/save.service';
+import { SpectatorApiService } from '../../../game/services/riot-api/spectator-api/spectator-api.service';
 
 @Component({
   selector: 'search-summoner',
@@ -16,19 +15,16 @@ export class SearchSummonerComponent implements OnDestroy {
   private subscription: Subscription = new Subscription();
 
   constructor(
-    private riotApiService: RiotApiService,
+    private spectatorApiService: SpectatorApiService,
     private router: Router,
     private saveService: SaveService
   ) {}
 
   public onSubmitForm(): void {
-    // call service with summonerName
     this.subscription.add(
-      this.riotApiService
-        .getCurrentGameInfoWithSummonerName(this.summonerName, useBackendMockData)
+      this.spectatorApiService
+        .getCurrentGameInfoWithSummonerName(this.summonerName)
         .subscribe((res) => {
-          //console.log('res = ' + JSON.stringify(res));
-
           if (res instanceof CustomErrorMessage) {
             // todoafter : use modal here
             if (res.message === ErrorMessages.summonerNotFound) {

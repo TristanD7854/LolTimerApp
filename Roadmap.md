@@ -66,7 +66,7 @@ https://developer.riotgames.com/docs/lol
 
 -fix+add unit tests + cypress (E2E)
 
--clean all (see todo + observable overkill, + $)
+-clean all (see todo/todoafter + observable overkill + $ + unused imports + any/unknown)
 
 -Try it in an aram game. 
     See if there's easy upgrades todo

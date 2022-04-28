@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { combineLatestWith } from 'rxjs';
-import { ChampionsService } from './game/services/champions/champions.service';
-import { RunesService } from './game/services/runes/runes.service';
 import { SaveService } from './game/services/save/save.service';
-import { SummonerSpellsService } from './game/services/summoner-spells/summoner-spells.service';
-import { VersionService } from './game/services/version/version.service';
+import { SummonerSpellsService } from './game/services/lol-resources/summoner-spells/summoner-spells.service';
+import { ChampionsService } from './game/services/lol-resources/champions/champions.service';
+import { RunesService } from './game/services/lol-resources/runes/runes.service';
+import { VersionService } from './game/services/lol-resources/version/version.service';
 
 @Component({
   selector: 'app-root',

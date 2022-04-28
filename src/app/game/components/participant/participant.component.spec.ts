@@ -2,7 +2,6 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 import { Team } from '../../models/team.model';
-import { ChampionsService } from '../../services/champions/champions.service';
 
 import { ParticipantComponent } from './participant.component';
 import { MockComponent } from 'ng-mocks';
@@ -11,6 +10,7 @@ import { ParticipantSummsComponent } from '../participant-summs/participant-summ
 import { of } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ChampionsService } from '../../services/lol-resources/champions/champions.service';
 
 describe('ParticipantComponent', () => {
   let component: ParticipantComponent;

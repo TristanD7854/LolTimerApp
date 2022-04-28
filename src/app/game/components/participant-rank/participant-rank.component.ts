@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { useBackendMockData } from '../../constants/mock.constants';
+import { getRankInNumber } from '../../helpers/rank-helper';
 import { CustomErrorMessage } from '../../models/errors/errors';
 import { RankInformation } from '../../models/riot-api/league.model';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
-import { RankService } from '../../services/rank/rank.service';
+import { RankApiService } from '../../services/riot-api/rank-api/rank-api.service';
 
 @Component({
   selector: 'participant-rank',
@@ -16,21 +16,19 @@ export class ParticipantRankComponent implements OnInit {
 
   public rank!: string;
 
-  constructor(private rankService: RankService) {}
+  constructor(private rankApiService: RankApiService) {}
 
   ngOnInit(): void {
-    this.rankService
-      .getRankInformation(this.currentGameParticipant.summonerName, useBackendMockData)
+    this.rankApiService
+      .getRankInformation(this.currentGameParticipant.summonerName)
       .subscribe((res) => {
-        //console.log('res ici = ' + JSON.stringify(res));
-
         if (res instanceof CustomErrorMessage) {
+          // todo
           console.log('manage error');
         } else {
           res.forEach((rankInformation: RankInformation) => {
             if (rankInformation.queueType == 'RANKED_SOLO_5x5') {
-              this.rank =
-                rankInformation.tier[0] + this.rankService.getRankInNumber(rankInformation.rank);
+              this.rank = rankInformation.tier[0] + getRankInNumber(rankInformation.rank);
             }
           });
         }

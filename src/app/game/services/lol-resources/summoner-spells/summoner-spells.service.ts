@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { giveCooldown } from '../../helpers/cooldown-helper';
-import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
-import { Summ, Summs } from '../../models/summs.model';
-import { LanguageService } from '../language/language.service';
+import { giveCooldown } from '../../../helpers/cooldown-helper';
+import { CurrentGameParticipant } from '../../../models/riot-api/spectator.model';
+import { Summ, Summs } from '../../../models/summs.model';
+import { RiotApiService } from '../../riot-api/riot-api.service';
 import { RunesService } from '../runes/runes.service';
-import { SaveService } from '../save/save.service';
-import { VersionService } from '../version/version.service';
+import { SaveService } from '../../save/save.service';
+import { LolResourcesService } from '../lol-resources.service';
 
 @Injectable({
   providedIn: 'root'
@@ -25,26 +25,19 @@ export class SummonerSpellsService {
   public isReady$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(
-    private http: HttpClient,
-    private versionService: VersionService,
+    private lolResourcesService: LolResourcesService,
     private saveService: SaveService,
-    private runesService: RunesService,
-    private languageService: LanguageService
+    private runesService: RunesService
   ) {}
 
   public initialize() {
-    this.summsJsonUrl = `${this.versionService.dataDragonUrl}/data/en_US/summoner.json`;
-    // we don't use LanguageService as we would have to consider "Saut eclair" instead of Flash when typing "f top"
     this.isAram = this.saveService.getCurrentGameInfo().gameMode == 'ARAM';
 
-    this.getSummsInfo().subscribe((resp) => {
+    // we don't use LanguageService as we would have to consider "Saut eclair" instead of Flash when typing "f top"
+    this.lolResourcesService.callDDragonCdnDataEn('summoner.json').subscribe((resp) => {
       this.summsInfo = resp;
       this.isReady$.next(true);
     });
-  }
-
-  public getSummsInfo(): Observable<any> {
-    return this.http.get<any>(this.summsJsonUrl);
   }
 
   public getSumms(participant: CurrentGameParticipant): Summs {
@@ -64,7 +57,9 @@ export class SummonerSpellsService {
           const summonerSpellData = this.summsInfo.data[summonerSpell];
           summ1 = {
             name: summonerSpellData.name,
-            image: `${this.versionService.dataDragonUrl}/img/spell/${summonerSpellData.image.full}`,
+            image: this.lolResourcesService.getDDragonImageUrl(
+              `img/spell/${summonerSpellData.image.full}`
+            ),
             cooldown: giveCooldown(
               summonerSpellData.cooldown[0],
               summonerSpellHaste + (this.isAram ? 70 : 0)
@@ -75,7 +70,9 @@ export class SummonerSpellsService {
           const summonerSpellData = this.summsInfo.data[summonerSpell];
           summ2 = {
             name: summonerSpellData.name,
-            image: `${this.versionService.dataDragonUrl}/img/spell/${summonerSpellData.image.full}`,
+            image: this.lolResourcesService.getDDragonImageUrl(
+              `img/spell/${summonerSpellData.image.full}`
+            ),
             cooldown: giveCooldown(
               summonerSpellData.cooldown[0],
               summonerSpellHaste + (this.isAram ? 70 : 0)

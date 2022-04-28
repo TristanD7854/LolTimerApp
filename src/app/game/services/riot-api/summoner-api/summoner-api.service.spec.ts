@@ -2,17 +2,17 @@ import { HttpClient, HttpHandler } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { RiotApiService } from './riot-api.service';
+import { SummonerApiService } from './summoner-api.service';
 
-describe('RiotApiService', () => {
-  let service: RiotApiService;
+describe('SummonerApiService', () => {
+  let service: SummonerApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       providers: [HttpClient, HttpHandler]
     });
-    service = TestBed.inject(RiotApiService);
+    service = TestBed.inject(SummonerApiService);
   });
 
   it('should be created', () => {

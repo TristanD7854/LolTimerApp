@@ -1,9 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { map, Observable, Subject } from 'rxjs';
 import { Champion } from '../../models/champion.model';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
-import { Settings } from '../../models/settings/settings.model';
-import { ChampionsService } from '../../services/champions/champions.service';
 import { SettingsService } from '../../services/settings/settings.service';
 import { SaveService } from '../../services/save/save.service';
 import { Position } from '../../models/position.model';
@@ -11,6 +8,8 @@ import { PositionService } from '../../services/position/position.service';
 import { Team } from '../../models/team.model';
 import { CommandService } from '../../services/command/command.service';
 import { SummonerSpell } from '../../models/summoner-spell.model';
+import { Subject } from 'rxjs';
+import { ChampionsService } from '../../services/lol-resources/champions/champions.service';
 
 @Component({
   selector: 'participant',
