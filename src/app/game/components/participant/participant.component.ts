@@ -10,6 +10,7 @@ import { CommandService } from '../../services/command/command.service';
 import { SummonerSpell } from '../../models/summoner-spell.model';
 import { Subject } from 'rxjs';
 import { ChampionsService } from '../../services/lol-resources/champions/champions.service';
+import { getAllPositions, getIndex, getPosition } from '../../helpers';
 
 @Component({
   selector: 'participant',
@@ -53,7 +54,7 @@ export class ParticipantComponent implements OnInit {
     });
 
     if (this.team.isAllyTeam) {
-      this.positionService.allyTeamSwapSubject.subscribe(([position1, position2]) => {
+      this.positionService.allyTeamSwapSubject$.subscribe(([position1, position2]) => {
         this.manageTeamSwapSubject(position1, position2);
       });
     } else {
@@ -61,7 +62,7 @@ export class ParticipantComponent implements OnInit {
         this.manageTeamSwapSubject(position1, position2);
       });
 
-      this.commandService.enemyTeamSummonerSubject.subscribe(([position, summonerSpell, time]) => {
+      this.commandService.enemyTeamSummonerSubject$.subscribe(([position, summonerSpell, time]) => {
         if (this.position == position) {
           this.useSummonerSpell(summonerSpell, time);
         }
@@ -71,7 +72,7 @@ export class ParticipantComponent implements OnInit {
 
   private manageTeamSwapSubject(position1: Position, position2: Position): void {
     if (this.position == position1 || this.position == position2) {
-      if (this.positionIndex == this.positionService.getIndex(this.position)) {
+      if (this.positionIndex == getIndex(this.position)) {
         this.changePosition(this.position == position1 ? position2 : position1);
       } else {
         this.findPositionIndex();
@@ -80,7 +81,7 @@ export class ParticipantComponent implements OnInit {
   }
 
   private loadInfo(): void {
-    this.allPositions = this.positionService.getAllPositions();
+    this.allPositions = getAllPositions();
 
     const championName = this.championsService.getChampionName(
       this.currentGameParticipant.championId
@@ -89,10 +90,9 @@ export class ParticipantComponent implements OnInit {
     this.isMainParticipant =
       this.saveService.mainParticipantName == this.currentGameParticipant.summonerName;
 
-    this.position = this.positionService.getPosition(this.positionIndex);
+    this.position = getPosition(this.positionIndex);
 
     this.championsService.getChampion(championName).subscribe((resp: Champion) => {
-      //console.log('champion returned = ' + JSON.stringify(resp));
       this.champion = resp;
     });
   }
@@ -107,11 +107,10 @@ export class ParticipantComponent implements OnInit {
   }
 
   private findPositionIndex(): void {
-    this.positionIndex = this.positionService.getIndex(this.position);
+    this.positionIndex = getIndex(this.position);
   }
 
   private useSummonerSpell(summonerSpell: SummonerSpell, time: number): void {
-    console.log('useSummonerSpell !!!');
     this.useSummsSubject.next([summonerSpell, time]);
   }
 }

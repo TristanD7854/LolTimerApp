@@ -46,7 +46,6 @@ export class SummonerSpellComponent implements OnInit, OnDestroy {
   }
 
   private startTimer(): void {
-    const timeLeft = this.timeLeft;
     this.summOpacity = '50%';
     setTimeout(() => {
       this.canStartTimer = true;
@@ -58,7 +57,13 @@ export class SummonerSpellComponent implements OnInit, OnDestroy {
           }
         })
       );
-    }, timeLeft * 2);
+    }, 0);
+  }
+
+  private resetTimer(): void {
+    this.summOpacity = '100%';
+    this.subscription.unsubscribe();
+    this.timeLeft = this.summ.cooldown;
   }
 
   public addTime(delay: number): void {
@@ -73,12 +78,6 @@ export class SummonerSpellComponent implements OnInit, OnDestroy {
       return;
     }
     this.timeLeft += delay;
-  }
-
-  private resetTimer(): void {
-    this.summOpacity = '100%';
-    this.subscription.unsubscribe();
-    this.timeLeft = this.summ.cooldown;
   }
 
   public ngOnDestroy(): void {

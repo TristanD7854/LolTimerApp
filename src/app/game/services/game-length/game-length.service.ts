@@ -13,7 +13,7 @@ export class GameLengthService {
   private spectatorDelay = 120;
 
   public start(): void {
-    this.saveService.hasSavedCurrentGameInfoSubject.subscribe((resp) => {
+    this.saveService.hasSavedCurrentGameInfoSubject$.subscribe((resp) => {
       if (resp) this.startGameDuration();
     });
   }
@@ -26,6 +26,6 @@ export class GameLengthService {
       interval$.subscribe(() => {
         this.gameLength += 1;
       });
-    }, this.maxGameDuration);
+    }, 0);
   }
 }

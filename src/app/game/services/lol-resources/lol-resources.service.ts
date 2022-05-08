@@ -53,7 +53,7 @@ export class LolResourcesService {
     return this.http.get<T>(`${this.cdragonUrl}/${specificRessource}`);
   }
 
-  public geCDragonImageUrl(specificRessource: string): string {
+  public getCDragonImageUrl(specificRessource: string): string {
     return `${this.cdragonUrl}/${specificRessource}`;
   }
 }

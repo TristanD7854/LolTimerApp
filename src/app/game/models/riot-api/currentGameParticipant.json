@@ -1,0 +1,26 @@
+{
+    "teamId": 200,
+    "spell1Id": 3,
+    "spell2Id": 4,
+    "championId": 888,
+    "profileIconId": 4568,
+    "summonerName": "Deferlis",
+    "bot": false,
+    "summonerId": "RCJk6taqtFd-n1dLZU1lYMCcufi-F139HNWm1wE-a2L6AI4",
+    "gameCustomizationObjects": [],
+    "perks": {
+        "perkIds": [
+            8465,
+            8463,
+            8473,
+            8451,
+            8345,
+            8347,
+            5007,
+            5002,
+            5003
+        ],
+        "perkStyle": 8400,
+        "perkSubStyle": 8300
+    }
+}

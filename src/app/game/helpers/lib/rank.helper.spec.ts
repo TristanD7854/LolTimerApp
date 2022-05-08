@@ -1,4 +1,4 @@
-import { getRankInNumber } from './rank-helper';
+import { getRankInNumber } from './rank.helper';
 
 describe('Rank helper', () => {
   it('return', () => {

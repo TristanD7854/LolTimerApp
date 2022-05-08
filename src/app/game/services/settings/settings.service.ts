@@ -8,6 +8,7 @@ import { Settings } from '../../models/settings/settings.model';
 export class SettingsService {
   public settings: Settings = defaultSettings;
 
+  /*
   public saveSettings(settingsProperty: string, value: boolean) {
     let isDefined = false;
     Object.keys(defaultSettings).forEach((key) => {
@@ -24,4 +25,5 @@ export class SettingsService {
       [settingsProperty]: value
     };
   }
+  */
 }

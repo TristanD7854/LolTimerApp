@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, of, switchMap, throwError } from 'rxjs';
 import { CustomErrorMessage, ErrorMessages } from 'src/app/game/models/errors/errors';
 import { CurrentGameInfo } from 'src/app/game/models/riot-api/spectator.model';
-import { SummonerDTO } from 'src/app/game/models/riot-api/summoner.model';
 import { RiotApiService } from '../riot-api.service';
 import { SummonerApiService } from '../summoner-api/summoner-api.service';
 
@@ -16,7 +15,9 @@ export class SpectatorApiService {
     private summonerApiService: SummonerApiService
   ) {}
 
-  public getCurrentGameInfo(encryptedSummonerId: string): Observable<CurrentGameInfo> {
+  private getCurrentGameInfoWithSummonerId(
+    encryptedSummonerId: string
+  ): Observable<CurrentGameInfo> {
     const riotApiServiceObs: Observable<CurrentGameInfo> =
       this.riotApiService.callBackend<CurrentGameInfo>(
         'spectator',
@@ -27,11 +28,12 @@ export class SpectatorApiService {
       catchError((err: HttpErrorResponse) => {
         if (err.error.status.message === ErrorMessages.summonerEncryptedIdNotFound) {
           return throwError(() => new Error(ErrorMessages.summonerEncryptedIdNotFound));
-          // No idea how to manage it
+          // No idea how to manage it, but I don't see how this can happen
         }
         if (err.error.status.message === 'Data not found') {
           return throwError(() => new Error(ErrorMessages.summonerNotInGame));
           // No idea how to manage it
+          // todo : modal ?
         }
 
         return throwError(() => new Error(ErrorMessages.unknownError));
@@ -51,7 +53,7 @@ export class SpectatorApiService {
           return of(new CustomErrorMessage(res.message));
         }
 
-        return this.getCurrentGameInfo(res.id).pipe(
+        return this.getCurrentGameInfoWithSummonerId(res.id).pipe(
           catchError((err: Error) => {
             return of(new CustomErrorMessage(err.message));
           })

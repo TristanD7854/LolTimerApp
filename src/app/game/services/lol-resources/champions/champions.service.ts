@@ -40,7 +40,6 @@ export class ChampionsService {
     return this.lolResourcesService.callDDragonCdnData<any>(`champion/${championName}.json`).pipe(
       map((response) => {
         const championData = response.data[championName];
-
         const spells: Spell[] = [];
 
         for (let index = 0; index < 4; index++) {

@@ -11,6 +11,8 @@ import { of } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ChampionsService } from '../../services/lol-resources/champions/champions.service';
+import mockCurrentGameParticipant from 'src/app/game/models/riot-api/currentGameParticipant.json';
+import { ParticipantRankComponent } from '../participant-rank/participant-rank.component';
 
 describe('ParticipantComponent', () => {
   let component: ParticipantComponent;
@@ -21,7 +23,8 @@ describe('ParticipantComponent', () => {
       declarations: [
         ParticipantComponent,
         MockComponent(ParticipantRunesComponent),
-        MockComponent(ParticipantSummsComponent)
+        MockComponent(ParticipantSummsComponent),
+        MockComponent(ParticipantRankComponent)
       ],
       imports: [FormsModule, MatTooltipModule],
       providers: [
@@ -42,31 +45,15 @@ describe('ParticipantComponent', () => {
     fixture = TestBed.createComponent(ParticipantComponent);
     component = fixture.componentInstance;
 
-    // todo : create json for that
-    const mockCurrentGameParticipant: CurrentGameParticipant = {
-      teamId: 100,
-      spell1Id: 4,
-      spell2Id: 12,
-      championId: 161,
-      profileIconId: 4075,
-      summonerName: 'Kreatonn',
-      bot: false,
-      summonerId: 'L1l1eR8qjO-MRqB0BWl4Lh568b17jRVGS96gB4gwprc-WR4',
-      gameCustomizationObjects: [],
-      perks: {
-        perkIds: [8229, 8224, 8210, 8237, 8345, 8347, 5008, 5008, 5003],
-        perkStyle: 8200,
-        perkSubStyle: 8300
-      }
-    };
+    const currentGameParticipant: CurrentGameParticipant = mockCurrentGameParticipant;
 
     // todo : isAllyTeam false, enemyTeamSwapSubject calls, ... Bref, tester pour de vrai
     const team: Team = {
-      members: [mockCurrentGameParticipant],
+      members: [currentGameParticipant],
       isAllyTeam: true
     };
 
-    component.currentGameParticipant = mockCurrentGameParticipant;
+    component.currentGameParticipant = currentGameParticipant;
     component.team = team;
     component.positionIndex = 0;
 
@@ -76,4 +63,6 @@ describe('ParticipantComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  //todo
 });

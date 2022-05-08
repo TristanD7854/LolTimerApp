@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { getRankInNumber } from '../../helpers/rank-helper';
+import { getRankInNumber } from '../../helpers';
 import { CustomErrorMessage } from '../../models/errors/errors';
 import { RankInformation } from '../../models/riot-api/league.model';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
@@ -20,11 +20,11 @@ export class ParticipantRankComponent implements OnInit {
 
   ngOnInit(): void {
     this.rankApiService
-      .getRankInformation(this.currentGameParticipant.summonerName)
+      .getRankInformationWithSummonerName(this.currentGameParticipant.summonerName)
       .subscribe((res) => {
         if (res instanceof CustomErrorMessage) {
           // todo
-          console.log('manage error');
+          //console.log('manage error');
         } else {
           res.forEach((rankInformation: RankInformation) => {
             if (rankInformation.queueType == 'RANKED_SOLO_5x5') {

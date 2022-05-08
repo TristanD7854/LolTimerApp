@@ -67,7 +67,7 @@ export class RunesService {
       if (rune.id == perkId) {
         statRunes.push({
           name: rune.name,
-          image: this.lolResourcesService.geCDragonImageUrl(
+          image: this.lolResourcesService.getCDragonImageUrl(
             'perk-images/statmods/' + rune.iconPath.match(/\w+\.png/g)[0].toLowerCase()
           )
         });

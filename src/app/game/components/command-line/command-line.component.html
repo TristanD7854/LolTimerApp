@@ -1,5 +1,6 @@
 <div class="form-container">
     <p>
+        // todo : create function for it (and test it)
         {{ commandMsgAfterBeingProcessed && commandMsgAfterBeingProcessed.error && commandMsgAfterBeingProcessed.error + ' : ' }} {{ commandMsgAfterBeingProcessed?.command }}
     </p>
     <form (ngSubmit)="onSubmitCommand()">

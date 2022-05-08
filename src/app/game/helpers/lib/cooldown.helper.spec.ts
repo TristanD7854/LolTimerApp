@@ -1,4 +1,4 @@
-import { giveCooldown } from './cooldown-helper';
+import { giveCooldown } from './cooldown.helper';
 
 describe('Coodldown helper', () => {
   it('return', () => {

@@ -15,10 +15,10 @@ export class ParticipantSummsComponent implements OnInit {
   public currentGameParticipant!: CurrentGameParticipant;
 
   @Input()
-  public useSummsSubject!: Subject<[SummonerSpell, number]>;
+  public useSummsSubject$!: Subject<[SummonerSpell, number]>;
 
-  public useSumm1Subject: Subject<number> = new Subject();
-  public useSumm2Subject: Subject<number> = new Subject();
+  public useSumm1Subject$: Subject<number> = new Subject();
+  public useSumm2Subject$: Subject<number> = new Subject();
 
   public summs!: Summs;
   // todoafter : manage changing summs in game (spellbook)
@@ -39,18 +39,19 @@ export class ParticipantSummsComponent implements OnInit {
     this.summ1$.next(this.summs.summ1);
     this.summ2$.next(this.summs.summ2);
 
-    this.useSummsSubject.subscribe(([summonerSpell, time]) => {
+    this.useSummsSubject$.subscribe(([summonerSpell, time]) => {
       this.useSummonerSpell(summonerSpell, time);
     });
   }
 
   private useSummonerSpell(summonerSpell: SummonerSpell, time: number): void {
     if (summonerSpell == this.summs.summ1.name) {
-      this.useSumm1Subject.next(time);
+      this.useSumm1Subject$.next(time);
     } else if (summonerSpell == this.summs.summ2.name) {
-      this.useSumm2Subject.next(time);
+      this.useSumm2Subject$.next(time);
     } else {
-      console.log('Summ not found');
+      // todo ?
+      //console.log('Summ not found');
     }
   }
 }

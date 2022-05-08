@@ -1,0 +1,44 @@
+{
+    "primaryPath": [
+      {
+        "name": "Guardian",
+        "image": "DDragonCanisbackImageUr-perk-images/Styles/Resolve/Guardian/Guardian.png"
+      },
+      {
+        "name": "Font of Life",
+        "image": "DDragonCanisbackImageUr-perk-images/Styles/Resolve/FontOfLife/FontOfLife.png"
+      },
+      {
+        "name": "Bone Plating",
+        "image": "DDragonCanisbackImageUr-perk-images/Styles/Resolve/BonePlating/BonePlating.png"
+      },
+      {
+        "name": "Overgrowth",
+        "image": "DDragonCanisbackImageUr-perk-images/Styles/Resolve/Overgrowth/Overgrowth.png"
+      }
+    ],
+    "secondaryPath": [
+      {
+        "name": "Biscuit Delivery",
+        "image": "DDragonCanisbackImageUr-perk-images/Styles/Inspiration/BiscuitDelivery/BiscuitDelivery.png"
+      },
+      {
+        "name": "Cosmic Insight",
+        "image": "DDragonCanisbackImageUr-perk-images/Styles/Inspiration/CosmicInsight/CosmicInsight.png"
+      }
+    ],
+    "statRunes": [
+      {
+        "name": "CDRScaling",
+        "image": "CDragonImageUrl-perk-images/statmods/statmodscdrscalingicon.png"
+      },
+      {
+        "name": "Armor",
+        "image": "CDragonImageUrl-perk-images/statmods/statmodsarmoricon.png"
+      },
+      {
+        "name": "MagicRes",
+        "image": "CDragonImageUrl-perk-images/statmods/statmodsmagicresicon.png"
+      }
+    ]
+  }

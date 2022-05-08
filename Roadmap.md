@@ -66,7 +66,17 @@ https://developer.riotgames.com/docs/lol
 
 -fix+add unit tests + cypress (E2E)
 
--clean all (see todo/todoafter + observable overkill + $ + unused imports + any/unknown)
+-clean all 
+    see todo/todoafter
+    observable overkill
+    $
+    unused imports
+    any/unknown
+    json files :
+        rename all json mock (mockSummsData ? mockSumms ? mockDDragonJSONCallfblabla ? exampleModel ?)
+        create folder for them
+        keep only relevant info inside them
+    -> one todo is about a modal, do it
 
 -Try it in an aram game. 
     See if there's easy upgrades todo
@@ -208,7 +218,7 @@ If lcu can't be called (or the user doesn't want to), don't show the related com
 -display minion stats (hp, ad, golds)
     calculate with game length
 
--display scores (with cs)
+-display scores (with cs + cs/mn)
 
 -display objects
     highlight recently bought ones (muramana also)
@@ -234,9 +244,8 @@ If lcu can't be called (or the user doesn't want to), don't show the related com
     https://riot-api-libraries.readthedocs.io/en/latest/ddragon.html#common-issues
         may have to scrap https://leagueoflegends.fandom.com/wiki/Akali/LoL to get damage info
     if too much, just display how much 100 magical/physical dmg would do
-
--input field to say who took plates golds, how many dark_harvest stacks enemy has, 
-    how_many gold first_strike did for an enemy ...
+    Would be nice to have full combo dmg on enemy champs
+    -> think about what a full combo is (input it in game ? Like +1/-1 near all spells (+aa), or include it in backend jsons)
 
 -display total mana cost of full combo
 
@@ -248,6 +257,15 @@ If lcu can't be called (or the user doesn't want to), don't show the related com
     suddenly (with kills/assist/tower), display it near them for some time 
     (5s, reset if earns again) in a really visible way
 
+-display tower golds (https://leagueoflegends.fandom.com/wiki/Turret#Outer_turret)
+    (independant of the game), global and local
+
+
+    --- Hard : gold estimations
+
+-input field to say who took plates golds, how many dark_harvest stacks enemy has, 
+    how_many gold first_strike did for an enemy ...
+
 Estimations (search official algo if they exist)
 -estimate gold diffs, take into account :
     first blood  
@@ -258,9 +276,6 @@ Estimations (search official algo if they exist)
     gp/tf passive, pyke ult  
     orn passive items bonus gold : 1k/item
 
--display tower golds (https://leagueoflegends.fandom.com/wiki/Turret#Outer_turret)
-    (independant of the game), global and local
-
 -estimate personal shutdowns in-game + how-much-gold someone gives (same for assist kill)
     [wiki](https://leagueoflegends.fandom.com/wiki/Kill)
     Compare it with my games, adapt the algo in consequence
@@ -269,8 +284,9 @@ Estimations (search official algo if they exist)
     golds difference
     objectives
 
+    --- Hard : gold estimations
+
 --
-See events for more ideas
 
 Would be nice to have but no idea how, because need huge db over time (like opgg, lolalytics ...)
     who has late game adv  

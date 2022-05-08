@@ -1,7 +1,6 @@
 <div class="team-container">
     <participant *ngFor="let participant of this.team?.members; let i = index" [team]="team" [positionIndex]="i" [currentGameParticipant]="participant">
     </participant>
-    
     <!--
         <participant *ngIf="this.participants" [currentGameParticipant]="this.participants[0]"></participant>
     -->

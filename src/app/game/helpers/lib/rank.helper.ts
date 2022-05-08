@@ -1,6 +1,6 @@
-import { Rank } from '../models/riot-api/league.model';
+import { Rank } from '../../models/riot-api/league.model';
 
-export function getRankInNumber(rank: Rank): number {
+export function getRankInNumber(rank: Rank): 1 | 2 | 3 | 4 {
   switch (rank) {
     case 'I':
       return 1;

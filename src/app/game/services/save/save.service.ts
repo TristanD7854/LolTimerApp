@@ -9,7 +9,7 @@ export class SaveService {
   private currentGameInfo!: CurrentGameInfo;
 
   public mainParticipantName!: string;
-  public hasSavedCurrentGameInfoSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+  public hasSavedCurrentGameInfoSubject$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
   );
   public allyTeam!: CurrentGameParticipant[];
@@ -17,7 +17,7 @@ export class SaveService {
 
   public setCurrentGameInfo(currentGameInfo: CurrentGameInfo): void {
     this.currentGameInfo = currentGameInfo;
-    this.hasSavedCurrentGameInfoSubject.next(true);
+    this.hasSavedCurrentGameInfoSubject$.next(true);
   }
 
   public setMainParticipant(name: string): void {

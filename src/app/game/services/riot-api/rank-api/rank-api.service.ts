@@ -1,5 +1,3 @@
-import { Rank } from '../../../models/riot-api/league.model';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, switchMap } from 'rxjs';
 import { CustomErrorMessage } from '../../../models/errors/errors';
@@ -11,14 +9,12 @@ import { SummonerApiService } from '../summoner-api/summoner-api.service';
   providedIn: 'root'
 })
 export class RankApiService {
-  private backEndUrl = 'http://localhost:5000';
-
   constructor(
     private riotApiService: RiotApiService,
     private summonerApiService: SummonerApiService
   ) {}
 
-  public getRankInformation(encryptedSummonerId: string): Observable<RankInformation[]> {
+  private getRankInformation(encryptedSummonerId: string): Observable<RankInformation[]> {
     return this.riotApiService.callBackend<RankInformation[]>(
       'league',
       `?encryptedSummonerId=${encryptedSummonerId}`
@@ -29,6 +25,7 @@ export class RankApiService {
     summonerName: string
   ): Observable<RankInformation[] | CustomErrorMessage> {
     return this.summonerApiService.getSummonerInformation(summonerName).pipe(
+      // todo : the below is duplicated in all api-services, factorisation possible ?
       catchError((err: Error) => {
         return of(new CustomErrorMessage(err.message));
       }),

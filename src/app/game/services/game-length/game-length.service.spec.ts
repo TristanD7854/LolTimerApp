@@ -1,16 +1,48 @@
-import { TestBed } from '@angular/core/testing';
+import { discardPeriodicTasks, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
+import { of } from 'rxjs';
+import { SaveService } from '../save/save.service';
 
 import { GameLengthService } from './game-length.service';
+
+import deferlisGame from 'src/app/game/services/riot-api/spectator-api/mockData/deferlisGame.json';
 
 describe('GameLengthService', () => {
   let service: GameLengthService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [
+        {
+          provide: SaveService,
+          useValue: {
+            hasSavedCurrentGameInfoSubject$: of(true),
+            getCurrentGameInfo: () => deferlisGame
+          }
+        }
+      ]
+    });
     service = TestBed.inject(GameLengthService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  describe('when it starts', () => {
+    it('should set the game length', () => {
+      service.start();
+
+      expect(service.gameLength).toEqual(130); // 10 + 120
+    });
+
+    it('should correctly increment the game length', fakeAsync((): void => {
+      service.start();
+
+      tick(8000);
+
+      expect(service.gameLength).toEqual(138);
+
+      discardPeriodicTasks();
+    }));
   });
 });

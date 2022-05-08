@@ -21,12 +21,12 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const obsInitialize$ = this.versionService.initialize();
-    const saveServiceIsReady$ = this.saveService.hasSavedCurrentGameInfoSubject;
+    const versionInitialize$ = this.versionService.initialize();
+    const saveServiceIsReady$ = this.saveService.hasSavedCurrentGameInfoSubject$;
 
-    obsInitialize$
+    versionInitialize$
       .pipe(combineLatestWith(saveServiceIsReady$))
-      .subscribe(([initialize, saveServiceIsReady]) => {
+      .subscribe(([, saveServiceIsReady]) => {
         if (saveServiceIsReady) {
           this.championsService.initialize();
           this.runesService.initialize();

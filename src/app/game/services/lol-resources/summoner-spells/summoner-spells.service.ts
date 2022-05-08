@@ -1,13 +1,11 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { giveCooldown } from '../../../helpers/cooldown-helper';
+import { BehaviorSubject } from 'rxjs';
 import { CurrentGameParticipant } from '../../../models/riot-api/spectator.model';
 import { Summ, Summs } from '../../../models/summs.model';
-import { RiotApiService } from '../../riot-api/riot-api.service';
 import { RunesService } from '../runes/runes.service';
 import { SaveService } from '../../save/save.service';
 import { LolResourcesService } from '../lol-resources.service';
+import { giveCooldown } from 'src/app/game/helpers';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +16,6 @@ export class SummonerSpellsService {
   http://ddragon.leagueoflegends.com/cdn/12.7.1/img/spell/SummonerFlash.png
   */
 
-  private summsJsonUrl!: string;
   private summsInfo: any;
   private isAram = false;
 
@@ -45,13 +42,11 @@ export class SummonerSpellsService {
     const summonerSpellHaste = hasCosmicInsight ? 18 : 0;
     // todowhenlcu : lucidity boots reduces the cd
 
-    // call rune service
-
     let summ1!: Summ;
     let summ2!: Summ;
 
     for (const summonerSpell in this.summsInfo.data) {
-      // verify that its own property
+      // verify that it is its own property
       if (Object.prototype.hasOwnProperty.call(this.summsInfo.data, summonerSpell)) {
         if (this.summsInfo.data[summonerSpell].key == participant.spell1Id) {
           const summonerSpellData = this.summsInfo.data[summonerSpell];

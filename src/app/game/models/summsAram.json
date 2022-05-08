@@ -1,0 +1,12 @@
+{
+    "summ1": {
+        "name": "Exhaust",
+        "image": "DDragonImageUrl-img/spell/SummonerExhaust.png",
+        "cooldown": 112
+    },
+    "summ2": {
+        "name": "Flash",
+        "image": "DDragonImageUrl-img/spell/SummonerFlash.png",
+        "cooldown": 160
+    }
+}
