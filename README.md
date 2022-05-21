@@ -29,9 +29,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Running end-to-end cypress tests
 
-ng serve  
+ng serve
 +  
-ng run LolTimerApp:cypress-open  
+ng run LolTimerApp:cypress-open
 
 or headless version :  
-ng run LolTimerApp:cypress-run   
+ng run LolTimerApp:cypress-run

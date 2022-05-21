@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-namespace */
 // ***********************************************
 // This example namespace declaration will help
 // with Intellisense and code completion in your
@@ -41,3 +42,32 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+declare namespace Cypress {
+  interface Chainable {
+    /**
+     * Custom command to select DOM element by data-cy attribute.
+     * @example cy.dataCy('greeting')
+     */
+    dataCy(value: string): Chainable<JQuery<HTMLElement>>;
+    dataTestId(value: string): Chainable<JQuery<HTMLElement>>;
+
+    spectateGame(summonerName: string): void;
+  }
+}
+
+function dataCy(value: string): Cypress.Chainable<JQuery<HTMLElement>> {
+  return cy.get(`[data-cy=${value}]`);
+}
+
+function dataTestId(value: string): Cypress.Chainable<JQuery<HTMLElement>> {
+  return cy.get(`[data-testid=${value}]`);
+}
+
+function spectateGame(summonerName: string): void {
+  cy.visit('/game/' + summonerName);
+}
+
+Cypress.Commands.add('dataCy', dataCy);
+Cypress.Commands.add('dataTestId', dataTestId);
+Cypress.Commands.add('spectateGame', spectateGame);

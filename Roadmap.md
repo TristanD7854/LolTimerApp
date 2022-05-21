@@ -64,19 +64,15 @@ https://developer.riotgames.com/docs/lol
 -display ranks                                              DONE
     can hide them
 
--fix+add unit tests + cypress (E2E)
+-fix+add unit tests + cypress (E2E)                         DONE
 
 -clean all 
-    see todo/todoafter
-    observable overkill
-    $
-    unused imports
-    any/unknown
-    json files :
-        rename all json mock (mockSummsData ? mockSumms ? mockDDragonJSONCallfblabla ? exampleModel ?)
-        create folder for them
-        keep only relevant info inside them
-    -> one todo is about a modal, do it
+
+-Html and scss linter
+
+-Change the tab icon
+
+-Use i18n for trads like "Show summoner names"
 
 -Try it in an aram game. 
     See if there's easy upgrades todo

@@ -3,6 +3,7 @@
     type="checkbox" 
     id="showSummonerNames" 
     name="showSummonerNames"
+    data-testid="showSummonerNamesCheckbox"
     [(ngModel)]="settingsService.settings.showSummonerNames">
     <label for="showSummonerNames">Show summoner names</label>
 
@@ -10,12 +11,17 @@
     type="checkbox" 
     id="showRanks" 
     name="showRanks"
+    data-testid="showSummonerRanksCheckbox"
     [(ngModel)]="settingsService.settings.showRanks">
-    <label for="showRanks">Show ranks</label>
+    <label for="showRanks">Show summoner ranks</label>
 </div>
 
 <div>
-    <select [(ngModel)]="selectedLanguage" (change)="selectLanguage()" [value]="'fr'">
+    <select
+    [(ngModel)]="selectedLanguage" 
+    (change)="selectLanguage()" 
+    [value]="'fr'"
+    data-testid="languageDropdown">
         <option *ngFor="let language of allLanguages" [ngValue]="language">{{language}}</option>
     </select>
 </div>

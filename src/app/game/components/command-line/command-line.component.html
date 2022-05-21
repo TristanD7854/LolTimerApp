@@ -1,11 +1,11 @@
 <div class="form-container">
     <p>
-        // todo : create function for it (and test it)
+        <!-- todo : create function for it (and test it) -->
         {{ commandMsgAfterBeingProcessed && commandMsgAfterBeingProcessed.error && commandMsgAfterBeingProcessed.error + ' : ' }} {{ commandMsgAfterBeingProcessed?.command }}
     </p>
     <form (ngSubmit)="onSubmitCommand()">
         <label for="commandInput">Command : </label>
-        <input id="commandInput" name="command" type="text" [(ngModel)]="command">
-        <button type="submit">Apply command</button>
+        <input id="commandInput" name="command" data-testid="command" type="text" [(ngModel)]="command">
+        <button type="submit" data-testid="submit-command">Submit command</button>
     </form>
 </div>
