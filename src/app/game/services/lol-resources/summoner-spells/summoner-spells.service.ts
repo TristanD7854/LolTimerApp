@@ -31,8 +31,8 @@ export class SummonerSpellsService {
     this.isAram = this.saveService.getCurrentGameInfo().gameMode == 'ARAM';
 
     // we don't use LanguageService as we would have to consider "Saut eclair" instead of Flash when typing "f top"
-    this.lolResourcesService.callDDragonCdnDataEn('summoner.json').subscribe((resp) => {
-      this.summsInfo = resp;
+    this.lolResourcesService.callDDragonCdnDataEn('summoner.json').subscribe((res) => {
+      this.summsInfo = res;
       this.isReady$.next(true);
     });
   }

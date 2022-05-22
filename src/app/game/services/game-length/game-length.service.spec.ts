@@ -1,4 +1,4 @@
-import { discardPeriodicTasks, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
+import { discardPeriodicTasks, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { SaveService } from '../save/save.service';
 

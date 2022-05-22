@@ -18,8 +18,8 @@ export class ChampionsService {
   constructor(private lolResourcesService: LolResourcesService) {}
 
   public initialize() {
-    this.lolResourcesService.callDDragonCdnData<any>('champion.json').subscribe((resp) => {
-      this.allChampionInfo = resp;
+    this.lolResourcesService.callDDragonCdnData<any>('champion.json').subscribe((res) => {
+      this.allChampionInfo = res;
       this.isReady$.next(true);
     });
   }
@@ -33,7 +33,7 @@ export class ChampionsService {
         }
       }
     }
-    return 'Champion not found'; // todo : returns error instead
+    return 'Champion not found';
   }
 
   public getChampion(championName: string): Observable<Champion> {

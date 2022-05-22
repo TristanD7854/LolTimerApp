@@ -12,7 +12,7 @@ export class SummonerSpellComponent implements OnInit, OnDestroy {
   public summ$!: Observable<Summ>;
 
   @Input()
-  public useSummSubject!: Subject<number>;
+  public useSummSubject$!: Subject<number>;
 
   public summ!: Summ;
   public timeLeft!: number;
@@ -29,12 +29,10 @@ export class SummonerSpellComponent implements OnInit, OnDestroy {
       this.timeLeft = this.summ.cooldown;
     });
 
-    this.useSummSubject.subscribe((time) => {
+    this.useSummSubject$.subscribe((time) => {
       this.useSumm(time);
     });
   }
-
-  //todo : grey out summ when not up, highlight it when up (red border)
 
   public useSumm(delay: number): void {
     if (!this.canStartTimer) return;

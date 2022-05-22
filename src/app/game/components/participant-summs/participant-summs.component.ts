@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, throwError } from 'rxjs';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 import { SummonerSpell } from '../../models/summoner-spell.model';
 import { Summs, Summ } from '../../models/summs.model';
@@ -21,7 +21,7 @@ export class ParticipantSummsComponent implements OnInit {
   public useSumm2Subject$: Subject<number> = new Subject();
 
   public summs!: Summs;
-  // todoafter : manage changing summs in game (spellbook)
+  // todolongafter : manage changing summs in game (spellbook)
 
   public summ1$: Subject<Summ> = new Subject<Summ>();
   public summ2$: Subject<Summ> = new Subject<Summ>();
@@ -29,8 +29,8 @@ export class ParticipantSummsComponent implements OnInit {
   constructor(private summonerSpellsService: SummonerSpellsService) {}
 
   public ngOnInit(): void {
-    this.summonerSpellsService.isReady$.subscribe((resp) => {
-      if (resp) this.loadSummonerSpells();
+    this.summonerSpellsService.isReady$.subscribe((res) => {
+      if (res) this.loadSummonerSpells();
     });
   }
 
@@ -50,8 +50,7 @@ export class ParticipantSummsComponent implements OnInit {
     } else if (summonerSpell == this.summs.summ2.name) {
       this.useSumm2Subject$.next(time);
     } else {
-      // todo ?
-      //console.log('Summ not found');
+      throwError(() => new Error('Summ not found'));
     }
   }
 }

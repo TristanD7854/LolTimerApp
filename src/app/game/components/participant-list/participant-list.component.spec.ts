@@ -29,7 +29,6 @@ describe('ParticipantListComponent', () => {
   });
 
   beforeEach(() => {
-    // todo : mock getCurrentGameInfoWithSummonerName, do real testing !!
     fixture = TestBed.createComponent(ParticipantListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

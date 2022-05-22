@@ -68,9 +68,9 @@ https://developer.riotgames.com/docs/lol
 
 -clean all 
 
--Html and scss linter
-
 -Change the tab icon
+
+-Html and scss linter
 
 -Use i18n for trads like "Show summoner names"
 

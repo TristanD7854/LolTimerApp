@@ -25,7 +25,6 @@ export class RankApiService {
     summonerName: string
   ): Observable<RankInformation[] | CustomErrorMessage> {
     return this.summonerApiService.getSummonerInformation(summonerName).pipe(
-      // todo : the below is duplicated in all api-services, factorisation possible ?
       catchError((err: Error) => {
         return of(new CustomErrorMessage(err.message));
       }),

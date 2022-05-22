@@ -17,8 +17,8 @@ export class ParticipantRunesComponent implements OnInit {
   constructor(private runesService: RunesService) {}
 
   public ngOnInit(): void {
-    this.runesService.isReady$.subscribe((resp) => {
-      if (resp) this.loadRunes();
+    this.runesService.isReady$.subscribe((res) => {
+      if (res) this.loadRunes();
     });
   }
 

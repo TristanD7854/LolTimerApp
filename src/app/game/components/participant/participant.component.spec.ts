@@ -47,7 +47,6 @@ describe('ParticipantComponent', () => {
 
     const currentGameParticipant: CurrentGameParticipant = mockCurrentGameParticipant;
 
-    // todo : isAllyTeam false, enemyTeamSwapSubject calls, ... Bref, tester pour de vrai
     const team: Team = {
       members: [currentGameParticipant],
       isAllyTeam: true
@@ -63,6 +62,4 @@ describe('ParticipantComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  //todo
 });

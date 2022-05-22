@@ -21,10 +21,10 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const versionInitialize$ = this.versionService.initialize();
+    this.versionService.initialize();
     const saveServiceIsReady$ = this.saveService.hasSavedCurrentGameInfoSubject$;
 
-    versionInitialize$
+    this.versionService.hasRetrievedVersion$
       .pipe(combineLatestWith(saveServiceIsReady$))
       .subscribe(([, saveServiceIsReady]) => {
         if (saveServiceIsReady) {

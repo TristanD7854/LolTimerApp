@@ -28,12 +28,9 @@ export class SpectatorApiService {
       catchError((err: HttpErrorResponse) => {
         if (err.error.status.message === ErrorMessages.summonerEncryptedIdNotFound) {
           return throwError(() => new Error(ErrorMessages.summonerEncryptedIdNotFound));
-          // No idea how to manage it, but I don't see how this can happen
         }
         if (err.error.status.message === 'Data not found') {
           return throwError(() => new Error(ErrorMessages.summonerNotInGame));
-          // No idea how to manage it
-          // todo : modal ?
         }
 
         return throwError(() => new Error(ErrorMessages.unknownError));

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { getLocaleCode } from '../../constants/languages.constants';
 import { LanguageService } from '../language/language.service';
 import { VersionService } from './version/version.service';
 
@@ -28,7 +29,9 @@ export class LolResourcesService {
   }
 
   public callDDragonCdnData<T>(specificRessource: string): Observable<T> {
-    return this.callDDragonCdn(`data/${this.languageService.getLocale()}/${specificRessource}`);
+    return this.callDDragonCdn(
+      `data/${getLocaleCode(this.languageService.language)}/${specificRessource}`
+    );
   }
 
   public callDDragonCdnDataEn<T>(specificRessource: string): Observable<T> {

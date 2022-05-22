@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { throwError } from 'rxjs';
 import { getRankInNumber } from '../../helpers';
 import { CustomErrorMessage } from '../../models/errors/errors';
 import { RankInformation } from '../../models/riot-api/league.model';
@@ -23,8 +24,7 @@ export class ParticipantRankComponent implements OnInit {
       .getRankInformationWithSummonerName(this.currentGameParticipant.summonerName)
       .subscribe((res) => {
         if (res instanceof CustomErrorMessage) {
-          // todo
-          //console.log('manage error');
+          throwError(() => new Error(res.message));
         } else {
           res.forEach((rankInformation: RankInformation) => {
             if (rankInformation.queueType == 'RANKED_SOLO_5x5') {

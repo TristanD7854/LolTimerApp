@@ -13,8 +13,8 @@ export class GameLengthService {
   private spectatorDelay = 120;
 
   public start(): void {
-    this.saveService.hasSavedCurrentGameInfoSubject$.subscribe((resp) => {
-      if (resp) this.startGameDuration();
+    this.saveService.hasSavedCurrentGameInfoSubject$.subscribe((res) => {
+      if (res) this.startGameDuration();
     });
   }
 

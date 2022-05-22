@@ -14,7 +14,7 @@ import { ErrorMessages } from '../../../models/errors/errors';
 describe('SummonerApiService', () => {
   let service: SummonerApiService;
   let riotApiService: RiotApiService;
-  const summonerName = 'Deferlis'; // todo global variable ?
+  const summonerName = 'Deferlis';
 
   beforeEach(() => {
     TestBed.configureTestingModule({

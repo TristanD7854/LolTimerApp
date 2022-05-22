@@ -26,7 +26,7 @@ describe('ParticipantRunesComponent', () => {
           provide: RunesService,
           useValue: {
             isReady$: of(true),
-            getRunes: jest.fn() // todo : return json (console.log Runes in serve to get json)
+            getRunes: jest.fn()
           }
         }
       ]

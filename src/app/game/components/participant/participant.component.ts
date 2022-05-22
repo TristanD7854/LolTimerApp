@@ -24,7 +24,7 @@ export class ParticipantComponent implements OnInit {
 
   public isMainParticipant = false;
 
-  public useSummsSubject: Subject<[SummonerSpell, number]> = new Subject();
+  public useSummsSubject$: Subject<[SummonerSpell, number]> = new Subject();
 
   @Input()
   public currentGameParticipant!: CurrentGameParticipant;
@@ -49,8 +49,8 @@ export class ParticipantComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.championsService.isReady$.subscribe((resp) => {
-      if (resp) this.loadInfo();
+    this.championsService.isReady$.subscribe((res) => {
+      if (res) this.loadInfo();
     });
 
     if (this.team.isAllyTeam) {
@@ -58,7 +58,7 @@ export class ParticipantComponent implements OnInit {
         this.manageTeamSwapSubject(position1, position2);
       });
     } else {
-      this.positionService.enemyTeamSwapSubject.subscribe(([position1, position2]) => {
+      this.positionService.enemyTeamSwapSubject$.subscribe(([position1, position2]) => {
         this.manageTeamSwapSubject(position1, position2);
       });
 
@@ -111,6 +111,6 @@ export class ParticipantComponent implements OnInit {
   }
 
   private useSummonerSpell(summonerSpell: SummonerSpell, time: number): void {
-    this.useSummsSubject.next([summonerSpell, time]);
+    this.useSummsSubject$.next([summonerSpell, time]);
   }
 }

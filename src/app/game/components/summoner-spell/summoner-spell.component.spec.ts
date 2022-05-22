@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { SummonerSpellComponent } from './summoner-spell.component';
 import { Summ } from '../../models/summs.model';
@@ -24,7 +24,7 @@ describe('SummonerSpellComponent', () => {
       cooldown: 300
     };
     component.summ$ = of(mockSumm);
-    component.useSummSubject = new Subject();
+    component.useSummSubject$ = new Subject();
 
     fixture.detectChanges();
   });

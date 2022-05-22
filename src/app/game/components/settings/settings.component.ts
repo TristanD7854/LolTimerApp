@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { existingLanguages, Language } from '../../constants/languages.constants';
+import { Language, languages } from '../../constants/languages.constants';
 import { LanguageService } from '../../services/language/language.service';
 import { SettingsService } from '../../services/settings/settings.service';
 
@@ -10,7 +10,7 @@ import { SettingsService } from '../../services/settings/settings.service';
 })
 export class SettingsComponent {
   public selectedLanguage: Language = this.languageService.language;
-  public allLanguages = existingLanguages;
+  public allLanguages = languages;
 
   constructor(public settingsService: SettingsService, private languageService: LanguageService) {}
 

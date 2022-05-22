@@ -17,7 +17,6 @@ describe('PositionService', () => {
     members: [currentGameParticipant, currentGameParticipant2],
     isAllyTeam: true
   };
-  // todo : use json
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
