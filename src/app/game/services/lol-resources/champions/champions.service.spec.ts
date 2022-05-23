@@ -6,11 +6,11 @@ import { LolResourcesService } from '../lol-resources.service';
 
 import { ChampionsService } from './champions.service';
 
-import championsMockData from 'src/app/game/services/lol-resources/champions/champions.json';
-import championMockData from 'src/app/game/services/lol-resources/champions/champion.json';
-import championMappedMockData from 'src/app/game/services/lol-resources/champions/championMapped.json';
+import mockDDragonChampion from 'src/app/game/services/lol-resources/champions/mockData/mockDDragonChampion.json';
+import mockDDragonJinx from 'src/app/game/services/lol-resources/champions/mockData/mockDDragonJinx.json';
+import championServiceGetChampionJinx from 'src/app/game/services/lol-resources/champions/mockData/mockGetChampion.json';
 
-import { Champion } from 'src/app/game/models/champion.model';
+import { Champion } from 'src/app/game/models/champion/champion.model';
 
 describe('ChampionsService', () => {
   let service: ChampionsService;
@@ -26,8 +26,8 @@ describe('ChampionsService', () => {
           provide: LolResourcesService,
           useValue: {
             callDDragonCdnData: (specificRessource: string) => {
-              if (specificRessource == 'champion.json') return of(championsMockData);
-              return of(championMockData);
+              if (specificRessource == 'champion.json') return of(mockDDragonChampion);
+              return of(mockDDragonJinx);
             },
             getDDragonImageUrl: () => 'imageUrl'
           }
@@ -77,7 +77,7 @@ describe('ChampionsService', () => {
 
     it('should return the champion object if it exists', (done) => {
       service.getChampion('Jinx').subscribe((champion: Champion) => {
-        expect(champion).toStrictEqual(championMappedMockData);
+        expect(champion).toStrictEqual(championServiceGetChampionJinx);
         done();
       });
     });

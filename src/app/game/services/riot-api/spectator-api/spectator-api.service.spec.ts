@@ -4,8 +4,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { SummonerApiService } from '../summoner-api/summoner-api.service';
 import { SpectatorApiService } from './spectator-api.service';
 
-import summonerInformation from 'src/app/game/services/riot-api/summoner-api/mockData/deferlis.json';
-import summonerInformationNotInGame from 'src/app/game/services/riot-api/spectator-api/mockData/summonerNotInGame.json';
+import mockSummoner from 'src/app/game/services/riot-api/summoner-api/mockData/mockSummoner.json';
+import mockSpectatorSummonerNotInGame from 'src/app/game/services/riot-api/spectator-api/mockData/mockSpectatorSummonerNotInGame.json';
 import { of, throwError } from 'rxjs';
 import { CustomErrorMessage, ErrorMessages } from 'src/app/game/models/errors/errors';
 import { RiotApiService } from '../riot-api.service';
@@ -25,7 +25,7 @@ describe('SpectatoApiService', () => {
         {
           provide: SummonerApiService,
           useValue: {
-            getSummonerInformation: () => of(summonerInformation)
+            getSummonerInformation: () => of(mockSummoner)
           }
         },
         {
@@ -64,7 +64,7 @@ describe('SpectatoApiService', () => {
         riotApiService.callBackend = jest
           .fn()
           .mockReturnValue(
-            throwError(() => new HttpErrorResponse({ error: summonerInformationNotInGame }))
+            throwError(() => new HttpErrorResponse({ error: mockSpectatorSummonerNotInGame }))
           );
 
         service.getCurrentGameInfoWithSummonerName(summonerName).subscribe((res) => {

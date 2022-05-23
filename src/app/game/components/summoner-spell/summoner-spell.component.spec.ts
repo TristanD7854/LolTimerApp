@@ -1,7 +1,7 @@
 import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { SummonerSpellComponent } from './summoner-spell.component';
-import { Summ } from '../../models/summs.model';
+import { Summ } from '../../models/summs/summs.model';
 import { of, Subject } from 'rxjs';
 
 describe('SummonerSpellComponent', () => {

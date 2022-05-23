@@ -4,11 +4,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { SummonerSpellsService } from './summoner-spells.service';
 
-import mockCurrentGameParticipant from 'src/app/game/models/riot-api/currentGameParticipant.json';
-import mockSumms from 'src/app/game/models/summs.json';
-import mockSummsAram from 'src/app/game/models/summsAram.json';
-import mockSummsWithoutCosmicInsight from 'src/app/game/models/summsWithoutCosmicInsight.json';
-import mockSummsData from 'src/app/game/services/lol-resources/summoner-spells/summoner.json';
+import mockCurrentGameParticipant from 'src/app/game/models/riot-api/mockCurrentGameParticipant.json';
+import mockSummsModel from 'src/app/game/models/summs/mockSummsModel.json';
+import mockSummsModel_Aram from 'src/app/game/models/summs/mockSummsModel_Aram.json';
+import mockSummsModel_WithoutCosmicInsight from 'src/app/game/models/summs/mockSummsModel_WithoutCosmicInsight.json';
+import mockDDragonSummoner from 'src/app/game/services/lol-resources/summoner-spells/mockDDragonSummoner.json';
 import { LolResourcesService } from '../lol-resources.service';
 import { of } from 'rxjs';
 import { SaveService } from '../../save/save.service';
@@ -29,7 +29,7 @@ describe('SummonerSpellsService', () => {
         {
           provide: LolResourcesService,
           useValue: {
-            callDDragonCdnDataEn: () => of(mockSummsData),
+            callDDragonCdnDataEn: () => of(mockDDragonSummoner),
             getDDragonImageUrl: (specificRessource: string) =>
               'DDragonImageUrl-' + specificRessource
           }
@@ -84,7 +84,7 @@ describe('SummonerSpellsService', () => {
 
     describe('with cosmic insight', () => {
       it('should return the correct summs if not aram', () => {
-        expect(service.getSumms(mockCurrentGameParticipant)).toEqual(mockSumms);
+        expect(service.getSumms(mockCurrentGameParticipant)).toEqual(mockSummsModel);
       });
 
       it('should return the correct summs if aram', () => {
@@ -92,7 +92,7 @@ describe('SummonerSpellsService', () => {
 
         service.initialize();
 
-        expect(service.getSumms(mockCurrentGameParticipant)).toEqual(mockSummsAram);
+        expect(service.getSumms(mockCurrentGameParticipant)).toEqual(mockSummsModel_Aram);
       });
     });
 
@@ -101,7 +101,9 @@ describe('SummonerSpellsService', () => {
         runesService.hasCosmicInsight = jest.fn().mockReturnValue(false);
       });
       it('should return the correct summs', () => {
-        expect(service.getSumms(mockCurrentGameParticipant)).toEqual(mockSummsWithoutCosmicInsight);
+        expect(service.getSumms(mockCurrentGameParticipant)).toEqual(
+          mockSummsModel_WithoutCosmicInsight
+        );
       });
     });
   });

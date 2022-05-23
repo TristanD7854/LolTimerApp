@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { CurrentGameParticipant } from '../../../models/riot-api/spectator.model';
-import { Summ, Summs } from '../../../models/summs.model';
+import { Summ, Summs } from '../../../models/summs/summs.model';
 import { RunesService } from '../runes/runes.service';
 import { SaveService } from '../../save/save.service';
 import { LolResourcesService } from '../lol-resources.service';
@@ -15,7 +15,6 @@ export class SummonerSpellsService {
   http://ddragon.leagueoflegends.com/cdn/12.7.1/data/en_US/summoner.json
   http://ddragon.leagueoflegends.com/cdn/12.7.1/img/spell/SummonerFlash.png
   */
-
   private summsInfo: any;
   private isAram = false;
 

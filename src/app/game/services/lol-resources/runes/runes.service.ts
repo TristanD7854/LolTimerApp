@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, combineLatestWith } from 'rxjs';
 import { CurrentGameParticipant } from 'src/app/game/models/riot-api/spectator.model';
-import { Rune, Runes } from 'src/app/game/models/runes.model';
+import { Rune, Runes } from 'src/app/game/models/runes/runes.model';
 import { LolResourcesService } from '../lol-resources.service';
 
 @Injectable({

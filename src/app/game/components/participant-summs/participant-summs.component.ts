@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Subject, throwError } from 'rxjs';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
-import { SummonerSpell } from '../../models/summoner-spell.model';
-import { Summs, Summ } from '../../models/summs.model';
+import { SummonerSpell, Summs, Summ } from '../../models/summs/summs.model';
 import { SummonerSpellsService } from '../../services/lol-resources/summoner-spells/summoner-spells.service';
 
 @Component({

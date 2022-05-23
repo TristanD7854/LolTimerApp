@@ -1,4 +1,4 @@
-import { SummonerSpell } from '../../models/summoner-spell.model';
+import { SummonerSpell } from '../../models/summs/summs.model';
 
 export function getSummonerSpellFullName(summonerSpell: string): SummonerSpell | null {
   switch (summonerSpell) {

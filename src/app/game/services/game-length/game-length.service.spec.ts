@@ -4,7 +4,7 @@ import { SaveService } from '../save/save.service';
 
 import { GameLengthService } from './game-length.service';
 
-import deferlisGame from 'src/app/game/services/riot-api/spectator-api/mockData/deferlisGame.json';
+import mockSpectator from 'src/app/game/services/riot-api/spectator-api/mockData/mockSpectator.json';
 
 describe('GameLengthService', () => {
   let service: GameLengthService;
@@ -16,7 +16,7 @@ describe('GameLengthService', () => {
           provide: SaveService,
           useValue: {
             hasSavedCurrentGameInfoSubject$: of(true),
-            getCurrentGameInfo: () => deferlisGame
+            getCurrentGameInfo: () => mockSpectator
           }
         }
       ]

@@ -4,8 +4,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ParticipantRankComponent } from './participant-rank.component';
 import { of } from 'rxjs';
 import { RankApiService } from '../../services/riot-api/rank-api/rank-api.service';
-import deferlisRank from 'src/app/game/services/riot-api/rank-api/mockData/deferlisRank.json';
-import mockCurrentGameParticipant from 'src/app/game/models/riot-api/currentGameParticipant.json';
+import mockRank from 'src/app/game/services/riot-api/rank-api/mockData/mockRank.json';
+import mockCurrentGameParticipant from 'src/app/game/models/riot-api/mockCurrentGameParticipant.json';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 
 import * as rankHelper from 'src/app/game/helpers';
@@ -28,7 +28,7 @@ describe('ParticipantRankComponent', () => {
         {
           provide: RankApiService,
           useValue: {
-            getRankInformationWithSummonerName: () => of(deferlisRank)
+            getRankInformationWithSummonerName: () => of(mockRank)
           }
         }
       ]

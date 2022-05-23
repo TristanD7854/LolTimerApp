@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { interval, Observable, Subject, Subscription } from 'rxjs';
-import { Summ } from '../../models/summs.model';
+import { Summ } from '../../models/summs/summs.model';
 
 @Component({
   selector: 'summoner-spell',

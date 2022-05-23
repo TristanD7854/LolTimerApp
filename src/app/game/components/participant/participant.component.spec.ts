@@ -11,7 +11,7 @@ import { of } from 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ChampionsService } from '../../services/lol-resources/champions/champions.service';
-import mockCurrentGameParticipant from 'src/app/game/models/riot-api/currentGameParticipant.json';
+import mockCurrentGameParticipant from 'src/app/game/models/riot-api/mockCurrentGameParticipant.json';
 import { ParticipantRankComponent } from '../participant-rank/participant-rank.component';
 
 describe('ParticipantComponent', () => {

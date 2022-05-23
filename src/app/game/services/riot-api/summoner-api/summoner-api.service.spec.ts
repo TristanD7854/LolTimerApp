@@ -5,8 +5,8 @@ import { RiotApiService } from '../riot-api.service';
 
 import { SummonerApiService } from './summoner-api.service';
 
-import summonerInformation from 'src/app/game/services/riot-api/summoner-api/mockData/deferlis.json';
-import summonerInformationNotFound from 'src/app/game/services/riot-api/summoner-api/mockData/summonerNotFound.json';
+import mockSummoner from 'src/app/game/services/riot-api/summoner-api/mockData/mockSummoner.json';
+import mockSummonerNotFound from 'src/app/game/services/riot-api/summoner-api/mockData/mockSummonerNotFound.json';
 
 import { of, throwError } from 'rxjs';
 import { ErrorMessages } from '../../../models/errors/errors';
@@ -25,7 +25,7 @@ describe('SummonerApiService', () => {
         {
           provide: RiotApiService,
           useValue: {
-            callBackend: () => of(summonerInformation)
+            callBackend: () => of(mockSummoner)
           }
         }
       ]
@@ -52,7 +52,7 @@ describe('SummonerApiService', () => {
     describe('if summoner exists', () => {
       it('should return the backend data', (done) => {
         service.getSummonerInformation(summonerName).subscribe((res) => {
-          expect(res).toEqual(summonerInformation);
+          expect(res).toEqual(mockSummoner);
 
           done();
         });
@@ -64,7 +64,7 @@ describe('SummonerApiService', () => {
         riotApiService.callBackend = jest
           .fn()
           .mockReturnValue(
-            throwError(() => new HttpErrorResponse({ error: summonerInformationNotFound }))
+            throwError(() => new HttpErrorResponse({ error: mockSummonerNotFound }))
           );
 
         service.getSummonerInformation(summonerName).subscribe({

@@ -6,7 +6,7 @@ import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 import { RunesService } from '../../services/lol-resources/runes/runes.service';
 
 import { ParticipantRunesComponent } from './participant-runes.component';
-import mockCurrentGameParticipant from 'src/app/game/models/riot-api/currentGameParticipant.json';
+import mockCurrentGameParticipant from 'src/app/game/models/riot-api/mockCurrentGameParticipant.json';
 
 describe('ParticipantRunesComponent', () => {
   let component: ParticipantRunesComponent;

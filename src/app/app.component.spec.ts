@@ -28,7 +28,8 @@ describe('AppComponent', () => {
         {
           provide: VersionService,
           useValue: {
-            initialize: () => of(true)
+            initialize: jest.fn(),
+            hasRetrievedVersion$: of(true)
           }
         },
         {

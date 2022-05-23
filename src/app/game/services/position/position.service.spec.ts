@@ -3,8 +3,8 @@ import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 import { Team } from '../../models/team.model';
 
 import { PositionService } from './position.service';
-import mockCurrentGameParticipant from 'src/app/game/models/riot-api/currentGameParticipant.json';
-import mockCurrentGameParticipant2 from 'src/app/game/models/riot-api/currentGameParticipant2.json';
+import mockCurrentGameParticipant from 'src/app/game/models/riot-api/mockCurrentGameParticipant.json';
+import mockCurrentGameParticipant2 from 'src/app/game/models/riot-api/mockCurrentGameParticipant2.json';
 import * as positionHelper from 'src/app/game/helpers';
 
 describe('PositionService', () => {

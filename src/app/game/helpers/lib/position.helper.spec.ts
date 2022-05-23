@@ -7,8 +7,8 @@ import {
   getPositionFullName,
   swapPositions
 } from './position.helper';
-import mockCurrentGameParticipant from 'src/app/game/models/riot-api/currentGameParticipant.json';
-import mockCurrentGameParticipant2 from 'src/app/game/models/riot-api/currentGameParticipant2.json';
+import mockCurrentGameParticipant from 'src/app/game/models/riot-api/mockCurrentGameParticipant.json';
+import mockCurrentGameParticipant2 from 'src/app/game/models/riot-api/mockCurrentGameParticipant2.json';
 
 describe('Position helper', () => {
   describe('getPositionFullName', () => {

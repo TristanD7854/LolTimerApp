@@ -2,12 +2,12 @@ import { TestBed } from '@angular/core/testing';
 
 import { SaveService } from './save.service';
 
-import deferlisGame from 'src/app/game/services/riot-api/spectator-api/mockData/deferlisGame.json';
+import mockSpectator from 'src/app/game/services/riot-api/spectator-api/mockData/mockSpectator.json';
 import { CurrentGameInfo } from '../../models/riot-api/spectator.model';
 
 describe('SaveService', () => {
   let service: SaveService;
-  const currentGameInfo: CurrentGameInfo = deferlisGame;
+  const currentGameInfo: CurrentGameInfo = mockSpectator;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

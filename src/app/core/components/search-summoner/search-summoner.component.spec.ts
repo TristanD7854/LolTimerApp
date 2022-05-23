@@ -5,7 +5,7 @@ import { SearchSummonerComponent } from './search-summoner.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 import { SpectatorApiService } from 'src/app/game/services/riot-api/spectator-api/spectator-api.service';
-import deferlisGame from 'src/app/game/services/riot-api/spectator-api/mockData/deferlisGame.json';
+import mockSpectator from 'src/app/game/services/riot-api/spectator-api/mockData/mockSpectator.json';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { SaveService } from '../../../game/services/save/save.service';
@@ -66,13 +66,13 @@ describe('SearchSummonerComponent', () => {
       beforeEach(() => {
         spectatorApiService.getCurrentGameInfoWithSummonerName = jest
           .fn()
-          .mockReturnValue(of(deferlisGame));
+          .mockReturnValue(of(mockSpectator));
       });
 
       it('should call setCurrentGameInfo with the currentGameInfo', () => {
         component.onSubmitForm();
 
-        expect(saveService.setCurrentGameInfo).toHaveBeenCalledWith(deferlisGame);
+        expect(saveService.setCurrentGameInfo).toHaveBeenCalledWith(mockSpectator);
       });
 
       it('should call setMainParticipant with sommonerName', () => {

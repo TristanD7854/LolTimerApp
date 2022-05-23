@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
-import { Runes } from '../../models/runes.model';
+import { Runes } from '../../models/runes/runes.model';
 import { RunesService } from '../../services/lol-resources/runes/runes.service';
 
 @Component({

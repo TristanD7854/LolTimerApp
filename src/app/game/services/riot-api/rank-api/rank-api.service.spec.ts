@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { RankApiService } from './rank-api.service';
 
-import summonerInformation from 'src/app/game/services/riot-api/summoner-api/mockData/deferlis.json';
+import summonerInformation from 'src/app/game/services/riot-api/summoner-api/mockData/mockSummoner.json';
 import { SummonerApiService } from '../summoner-api/summoner-api.service';
 import { of, throwError } from 'rxjs';
 import { RiotApiService } from '../riot-api.service';

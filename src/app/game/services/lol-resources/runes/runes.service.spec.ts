@@ -4,12 +4,12 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 import { LolResourcesService } from '../lol-resources.service';
 
-import runesReforgedMock from 'src/app/game/services/lol-resources/runes/runesReforged.json';
-import perksMock from 'src/app/game/services/lol-resources/runes/perks.json';
+import mockDDragonRunesReforged from 'src/app/game/services/lol-resources/runes/mockData/mockDDragonRunesReforged.json';
+import mockCDragonPerks from 'src/app/game/services/lol-resources/runes/mockData/mockCDragonPerks.json';
 
-import mockCurrentGameParticipant from 'src/app/game/models/riot-api/currentGameParticipant.json';
-import mockCurrentGameParticipant2 from 'src/app/game/models/riot-api/currentGameParticipant2.json';
-import runesMock from 'src/app/game/models/runesMock.json';
+import mockCurrentGameParticipant from 'src/app/game/models/riot-api/mockCurrentGameParticipant.json';
+import mockCurrentGameParticipant2 from 'src/app/game/models/riot-api/mockCurrentGameParticipant2.json';
+import mockRunesModel from 'src/app/game/models/runes/mockRunesModel.json';
 
 import { RunesService } from './runes.service';
 
@@ -26,8 +26,8 @@ describe('RunesService', () => {
         {
           provide: LolResourcesService,
           useValue: {
-            callDDragonCdnData: () => of(runesReforgedMock),
-            callCDragonCdn: () => of(perksMock),
+            callDDragonCdnData: () => of(mockDDragonRunesReforged),
+            callCDragonCdn: () => of(mockCDragonPerks),
             getCDragonImageUrl: (specificRessource: string) =>
               'CDragonImageUrl-' + specificRessource,
             getDDragonCanisbackImageUrl: (specificRessource: string) =>
@@ -87,7 +87,7 @@ describe('RunesService', () => {
     });
 
     it('should return the correct runes', () => {
-      expect(service.getRunes(mockCurrentGameParticipant)).toEqual(runesMock);
+      expect(service.getRunes(mockCurrentGameParticipant)).toEqual(mockRunesModel);
     });
   });
 });

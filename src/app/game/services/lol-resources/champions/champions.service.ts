@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { Champion, Passive, Spell } from 'src/app/game/models/champion.model';
+import { Champion, Passive, Spell } from 'src/app/game/models/champion/champion.model';
 import { LolResourcesService } from '../lol-resources.service';
 
 @Injectable({

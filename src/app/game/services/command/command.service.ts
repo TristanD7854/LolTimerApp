@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ProcessedCommand } from '../../models/command.model';
 import { Subject } from 'rxjs';
 import { Position } from '../../models/position.model';
-import { SummonerSpell } from '../../models/summoner-spell.model';
+import { SummonerSpell } from '../../models/summs/summs.model';
 import { GameLengthService } from '../game-length/game-length.service';
 import { getPositionFullName, getSummonerSpellFullName, getTimeOfUse } from '../../helpers';
 

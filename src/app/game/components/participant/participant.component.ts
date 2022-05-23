@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Champion } from '../../models/champion.model';
+import { Champion } from '../../models/champion/champion.model';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
 import { SettingsService } from '../../services/settings/settings.service';
 import { SaveService } from '../../services/save/save.service';
@@ -7,7 +7,7 @@ import { Position } from '../../models/position.model';
 import { PositionService } from '../../services/position/position.service';
 import { Team } from '../../models/team.model';
 import { CommandService } from '../../services/command/command.service';
-import { SummonerSpell } from '../../models/summoner-spell.model';
+import { SummonerSpell } from '../../models/summs/summs.model';
 import { Subject } from 'rxjs';
 import { ChampionsService } from '../../services/lol-resources/champions/champions.service';
 import { getAllPositions, getIndex, getPosition } from '../../helpers';

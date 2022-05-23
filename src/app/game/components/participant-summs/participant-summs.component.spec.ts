@@ -8,8 +8,8 @@ import { SummonerSpellComponent } from '../summoner-spell/summoner-spell.compone
 import { Subject, BehaviorSubject } from 'rxjs';
 import { SummonerSpellsService } from '../../services/lol-resources/summoner-spells/summoner-spells.service';
 import { CurrentGameParticipant } from '../../models/riot-api/spectator.model';
-import mockCurrentGameParticipant from 'src/app/game/models/riot-api/currentGameParticipant.json';
-import mockSumms from 'src/app/game/models/summs.json';
+import mockCurrentGameParticipant from 'src/app/game/models/riot-api/mockCurrentGameParticipant.json';
+import mockSummsModel from 'src/app/game/models/summs/mockSummsModel.json';
 
 describe('ParticipantSummsComponent', () => {
   let component: ParticipantSummsComponent;
@@ -29,7 +29,7 @@ describe('ParticipantSummsComponent', () => {
           provide: SummonerSpellsService,
           useValue: {
             isReady$: new BehaviorSubject<boolean>(false),
-            getSumms: () => mockSumms
+            getSumms: () => mockSummsModel
           }
         }
       ]
@@ -62,7 +62,7 @@ describe('ParticipantSummsComponent', () => {
 
     it('should emit events for summ1', (done) => {
       component.summ1$.subscribe((summ) => {
-        expect(summ).toBe(mockSumms.summ1);
+        expect(summ).toBe(mockSummsModel.summ1);
         done();
       });
 
@@ -71,7 +71,7 @@ describe('ParticipantSummsComponent', () => {
 
     it('should emit events for summ2', (done) => {
       component.summ2$.subscribe((summ) => {
-        expect(summ).toBe(mockSumms.summ2);
+        expect(summ).toBe(mockSummsModel.summ2);
         done();
       });
 
