@@ -1,0 +1,16 @@
+<div id="overlay" (click)="cancel()"></div>
+
+<div id="container">
+    <div id="header">
+        {{header}}
+    </div>
+
+    <div id="content">
+        {{text}}
+    </div>
+
+    <div id="actions" *ngIf="hasDecision">
+        <button class="cancel" (click)="cancel()">{{cancelText}}</button>
+        <button (click)="accept()">{{acceptText}}</button>
+    </div>
+</div>

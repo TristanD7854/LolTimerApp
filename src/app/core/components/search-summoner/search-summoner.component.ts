@@ -12,6 +12,11 @@ import { SpectatorApiService } from '../../../game/services/riot-api/spectator-a
 })
 export class SearchSummonerComponent implements OnDestroy {
   public summonerName!: string;
+
+  public showModal = false;
+  public headerModal = '';
+  public textModal = '';
+
   private subscription: Subscription = new Subscription();
 
   constructor(
@@ -26,16 +31,15 @@ export class SearchSummonerComponent implements OnDestroy {
         .getCurrentGameInfoWithSummonerName(this.summonerName)
         .subscribe((res) => {
           if (res instanceof CustomErrorMessage) {
-            // todoafter : use modal here
             if (res.message === ErrorMessages.summonerNotFound) {
-              // todo : modal : display modal info accordingly
-              console.log('SUMMONER NOT FOUND');
+              this.showModalWithText(
+                '' + this.summonerName + ' : ' + res.message,
+                'Maybe this summoner in not on EUW'
+              );
             } else if (res.message === ErrorMessages.summonerNotInGame) {
-              // todo :  modal : display modal info accordingly
-              console.log('SUMMONER NOT IN GAME');
+              this.showModalWithText(res.message, '');
             } else {
-              // todo :  modal : display modal info accordingly
-              console.log('Other error, display message : ' + res.message);
+              this.showModalWithText(res.message, '');
             }
           } else {
             this.saveService.setCurrentGameInfo(res);
@@ -46,7 +50,17 @@ export class SearchSummonerComponent implements OnDestroy {
     );
   }
 
-  ngOnDestroy(): void {
+  private showModalWithText(header: string, text: string): void {
+    this.showModal = true;
+    this.headerModal = header;
+    this.textModal = text;
+  }
+
+  public hideModal() {
+    this.showModal = false;
+  }
+
+  public ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 }

@@ -66,7 +66,9 @@ https://developer.riotgames.com/docs/lol
 
 -fix+add unit tests + cypress (E2E)                         DONE
 
--clean all 
+-clean all                                                  DONE
+
+-create modal and use it                                    DONE
 
 -Change the tab icon
 
@@ -77,6 +79,8 @@ https://developer.riotgames.com/docs/lol
 -Try it in an aram game. 
     See if there's easy upgrades todo
     (reminder : css will be after lcu)
+
+-dark theme ?
 
 ### OWN API - For runes/champions/items stats (like champion spells damage ratios)
 

@@ -3,3 +3,13 @@
     <team [team]="this.allyTeam"></team>
     <team [team]="this.enemyTeam"></team>
 </div>
+
+<modal *ngIf="showModal"
+    [header]="headerModal"
+    [text]="textModal"
+    [hasDecision]="true"
+    [acceptText]="'Go home'"
+    [cancelText]="'Stay here'"
+    (acceptEvent)="goBackToHome()"
+    (cancelEvent)="hideModal()">
+</modal>

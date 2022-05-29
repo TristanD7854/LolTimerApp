@@ -4,3 +4,10 @@
     <input id="summonerNameInput" name="summonerName" type="text" [(ngModel)]="summonerName" data-testid="summonerNameInput">
     <button type="submit" data-testid="summonerNameButton">Search</button>
 </form>
+
+<modal *ngIf="showModal"
+    [header]="headerModal"
+    [text]="textModal"
+    [hasDecision]="false"
+    (cancelEvent)="hideModal()">
+</modal>

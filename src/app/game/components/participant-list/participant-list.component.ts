@@ -16,6 +16,10 @@ export class ParticipantListComponent implements OnInit {
   public allyTeam!: Team;
   public enemyTeam!: Team;
 
+  public showModal = false;
+  public headerModal = '';
+  public textModal = '';
+
   constructor(
     private saveService: SaveService,
     private route: ActivatedRoute,
@@ -28,18 +32,18 @@ export class ParticipantListComponent implements OnInit {
       this.loadInfo();
     } else {
       const summonerName = this.route.snapshot.params['summonerName'];
-      // todo : find way to factorise with block from search-summoner
       this.spectatorApiService.getCurrentGameInfoWithSummonerName(summonerName).subscribe((res) => {
         if (res instanceof CustomErrorMessage) {
-          // todo : use modal here
           if (res.message === ErrorMessages.summonerNotFound) {
-            console.log('SUMMONER NOT FOUND');
+            this.showModalWithText(
+              '' + summonerName + ' : ' + res.message,
+              'Maybe this summoner in not on EUW'
+            );
           } else if (res.message === ErrorMessages.summonerNotInGame) {
-            console.log('SUMMONER NOT IN GAME');
+            this.showModalWithText(res.message, '');
           } else {
-            console.log('Other error, display message : ' + res.message);
+            this.showModalWithText(res.message, '');
           }
-          this.router.navigateByUrl('');
         } else {
           this.saveService.setCurrentGameInfo(res);
           this.saveService.setMainParticipant(summonerName);
@@ -72,5 +76,19 @@ export class ParticipantListComponent implements OnInit {
       members: enemyTeamMembers,
       isAllyTeam: false
     };
+  }
+
+  public goBackToHome() {
+    this.router.navigateByUrl('');
+  }
+
+  private showModalWithText(header: string, text: string): void {
+    this.showModal = true;
+    this.headerModal = header;
+    this.textModal = text;
+  }
+
+  public hideModal() {
+    this.showModal = false;
   }
 }
