@@ -34,7 +34,7 @@ export class SearchSummonerComponent implements OnDestroy {
             if (res.message === ErrorMessages.summonerNotFound) {
               this.showModalWithText(
                 '' + this.summonerName + ' : ' + res.message,
-                'Maybe this summoner in not on EUW'
+                'Maybe this summoner is not in EUW'
               );
             } else if (res.message === ErrorMessages.summonerNotInGame) {
               this.showModalWithText(res.message, '');

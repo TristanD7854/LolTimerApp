@@ -32,6 +32,9 @@ export class SpectatorApiService {
         if (err.error.status.message === 'Data not found') {
           return throwError(() => new Error(ErrorMessages.summonerNotInGame));
         }
+        if (err.error.status.message === ErrorMessages.rateLimitExceeded) {
+          return throwError(() => new Error(ErrorMessages.rateLimitExceeded));
+        }
 
         return throwError(() => new Error(ErrorMessages.unknownError));
       })

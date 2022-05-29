@@ -76,13 +76,11 @@ https://developer.riotgames.com/docs/lol
 
 -Scss linter                                                DONE
 
--Use i18n for trads like "Show summoner names"
-
 -Try it in an aram game. 
     See if there's easy upgrades todo
     (reminder : css will be after lcu)
 
--dark theme ?
+-Register product
 
 ### OWN API - For runes/champions/items stats (like champion spells damage ratios)
 

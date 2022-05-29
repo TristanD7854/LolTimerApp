@@ -13,7 +13,7 @@ export class RiotApiService {
 
   public callBackend<T>(routeName: string, queryString: string): Observable<T> {
     return this.http.get<T>(
-      `${this.backEndUrl}/${routeName}/${useBackendMockData ? 'mock/' : '/'}${queryString}`
+      `${this.backEndUrl}/${routeName}/${useBackendMockData ? 'mock/' : ''}${queryString}`
     );
   }
 }

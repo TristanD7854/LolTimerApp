@@ -9,8 +9,7 @@ export class GameLengthService {
   constructor(private saveService: SaveService) {}
 
   public gameLength!: number;
-  private maxGameDuration = 4500; // 1h15mn
-  private spectatorDelay = 120;
+  private spectatorDelay = -20;
 
   public start(): void {
     this.saveService.hasSavedCurrentGameInfoSubject$.subscribe((res) => {

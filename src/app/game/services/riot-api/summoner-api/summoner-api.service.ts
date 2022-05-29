@@ -19,8 +19,16 @@ export class SummonerApiService {
 
     return riotApiServiceObs.pipe(
       catchError((err: HttpErrorResponse) => {
+        console.log('summoner-api.service, pipe : ' + JSON.stringify(err));
+
+        if (err.error.status.message === 'Forbidden') {
+          return throwError(() => new Error(ErrorMessages.apiKeyOutdated));
+        }
         if (err.error.status.message === 'Data not found - summoner not found') {
           return throwError(() => new Error(ErrorMessages.summonerNotFound));
+        }
+        if (err.error.status.message === ErrorMessages.rateLimitExceeded) {
+          return throwError(() => new Error(ErrorMessages.rateLimitExceeded));
         }
 
         return throwError(() => new Error(ErrorMessages.unknownError));

@@ -1,3 +1,4 @@
 <div class="game-info-container">
     <p> {{ this.gameLengthService.gameLength | minuteSecond }} </p>
+    <p> {{ this.saveService.getCurrentGameInfo()?.gameMode }} </p>
 </div>

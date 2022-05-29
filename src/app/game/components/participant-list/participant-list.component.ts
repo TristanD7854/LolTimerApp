@@ -37,7 +37,7 @@ export class ParticipantListComponent implements OnInit {
           if (res.message === ErrorMessages.summonerNotFound) {
             this.showModalWithText(
               '' + summonerName + ' : ' + res.message,
-              'Maybe this summoner in not on EUW'
+              'Maybe this summoner is not in EUW'
             );
           } else if (res.message === ErrorMessages.summonerNotInGame) {
             this.showModalWithText(res.message, '');
@@ -59,8 +59,10 @@ export class ParticipantListComponent implements OnInit {
   }
 
   private createTeams(): void {
+    const allyTeamSide = this.saveService.mainParticipant.teamId;
+
     const allyTeamMembers: CurrentGameParticipant[] = this.currentGameInfo.participants.filter(
-      (participant: CurrentGameParticipant) => participant.teamId == 200
+      (participant: CurrentGameParticipant) => participant.teamId == allyTeamSide
     );
 
     this.allyTeam = {
@@ -69,7 +71,7 @@ export class ParticipantListComponent implements OnInit {
     };
 
     const enemyTeamMembers: CurrentGameParticipant[] = this.currentGameInfo.participants.filter(
-      (participant: CurrentGameParticipant) => participant.teamId == 100
+      (participant: CurrentGameParticipant) => participant.teamId != allyTeamSide
     );
 
     this.enemyTeam = {

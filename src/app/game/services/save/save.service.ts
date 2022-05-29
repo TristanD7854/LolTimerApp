@@ -8,6 +8,7 @@ import { CurrentGameInfo, CurrentGameParticipant } from '../../models/riot-api/s
 export class SaveService {
   private currentGameInfo!: CurrentGameInfo;
 
+  public mainParticipant!: CurrentGameParticipant;
   public mainParticipantName!: string;
   public hasSavedCurrentGameInfoSubject$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
     false
@@ -22,6 +23,12 @@ export class SaveService {
 
   public setMainParticipant(name: string): void {
     this.mainParticipantName = name;
+
+    this.currentGameInfo.participants.forEach((participant: CurrentGameParticipant) => {
+      if (participant.summonerName == name) {
+        this.mainParticipant = participant;
+      }
+    });
   }
 
   public getCurrentGameInfo(): CurrentGameInfo {

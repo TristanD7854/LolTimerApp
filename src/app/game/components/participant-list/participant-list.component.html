@@ -1,7 +1,11 @@
 
 <div class="teams-container">
-    <team [team]="this.allyTeam"></team>
-    <team [team]="this.enemyTeam"></team>
+    <div id="first-team">
+        <team [team]="this.allyTeam"></team>
+    </div>
+    <div>
+        <team [team]="this.enemyTeam"></team>
+    </div>
 </div>
 
 <modal *ngIf="showModal"

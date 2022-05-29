@@ -1,5 +1,14 @@
 .team-container {
-    display: flex;
     border: 1px solid blue;
     padding: 1px;
+}
+
+#participants-container {
+    display: flex;
+}
+
+#side-container {
+    p {
+        margin: 0px;
+    }
 }

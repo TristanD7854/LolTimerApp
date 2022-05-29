@@ -15,7 +15,7 @@ export class ParticipantRankComponent implements OnInit {
   @Input()
   public currentGameParticipant!: CurrentGameParticipant;
 
-  public rank!: string;
+  public rank = 'N\\A';
 
   constructor(private rankApiService: RankApiService) {}
 
