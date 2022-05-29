@@ -70,7 +70,7 @@ https://developer.riotgames.com/docs/lol
 
 -create modal and use it                                    DONE
 
--Change the tab icon
+-Change the tab icon                                        DONE
 
 -Html and scss linter
 
