@@ -19,8 +19,7 @@ export class SummonerApiService {
 
     return riotApiServiceObs.pipe(
       catchError((err: HttpErrorResponse) => {
-        console.log('summoner-api.service, pipe : ' + JSON.stringify(err));
-
+        //console.log('summoner-api.service, pipe : ' + JSON.stringify(err));
         if (err.error.status.message === 'Forbidden') {
           return throwError(() => new Error(ErrorMessages.apiKeyOutdated));
         }

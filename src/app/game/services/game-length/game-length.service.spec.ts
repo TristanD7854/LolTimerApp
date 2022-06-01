@@ -32,7 +32,7 @@ describe('GameLengthService', () => {
     it('should set the game length', () => {
       service.start();
 
-      expect(service.gameLength).toEqual(130); // 10 + 120
+      expect(service.gameLength).toEqual(-10); // -20 + 10
     });
 
     it('should correctly increment the game length', fakeAsync((): void => {
@@ -40,7 +40,7 @@ describe('GameLengthService', () => {
 
       tick(8000);
 
-      expect(service.gameLength).toEqual(138);
+      expect(service.gameLength).toEqual(-2);
 
       discardPeriodicTasks();
     }));

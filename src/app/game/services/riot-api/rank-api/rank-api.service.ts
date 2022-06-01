@@ -24,6 +24,7 @@ export class RankApiService {
   public getRankInformationWithSummonerName(
     summonerName: string
   ): Observable<RankInformation[] | CustomErrorMessage> {
+    //console.log('call getRankInformationWithSummonerName with ' + summonerName);
     return this.summonerApiService.getSummonerInformation(summonerName).pipe(
       catchError((err: Error) => {
         return of(new CustomErrorMessage(err.message));

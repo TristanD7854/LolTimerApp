@@ -80,7 +80,7 @@ https://developer.riotgames.com/docs/lol
     See if there's easy upgrades todo
     (reminder : css will be after lcu)
 
--Register product
+-Register product for riot api key
 
 ### OWN API - For runes/champions/items stats (like champion spells damage ratios)
 

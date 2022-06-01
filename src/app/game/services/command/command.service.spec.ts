@@ -5,13 +5,14 @@ import { CommandService } from './command.service';
 import * as positionHelper from 'src/app/game/helpers';
 import * as timeHelper from 'src/app/game/helpers';
 import * as summonerSpellHelper from 'src/app/game/helpers';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('CommandService', () => {
   let service: CommandService;
   const command = 'f m 30';
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({ providers: [HttpClient, HttpHandler] });
     service = TestBed.inject(CommandService);
 
     jest.spyOn(positionHelper, 'getPositionFullName').mockReturnValue('MID');

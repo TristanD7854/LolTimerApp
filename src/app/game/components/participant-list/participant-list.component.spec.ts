@@ -6,6 +6,7 @@ import { SaveService } from '../../services/save/save.service';
 import { ParticipantListComponent } from './participant-list.component';
 import { MockComponent } from 'ng-mocks';
 import { TeamComponent } from '../team/team.component';
+import { ModalComponent } from '../../../core/components/modal/modal.component';
 
 describe('ParticipantListComponent', () => {
   let component: ParticipantListComponent;
@@ -13,7 +14,11 @@ describe('ParticipantListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ParticipantListComponent, MockComponent(TeamComponent)],
+      declarations: [
+        ParticipantListComponent,
+        MockComponent(TeamComponent),
+        MockComponent(ModalComponent)
+      ],
       imports: [RouterTestingModule],
       providers: [
         {

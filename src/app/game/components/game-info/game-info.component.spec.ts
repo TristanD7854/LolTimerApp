@@ -4,6 +4,7 @@ import { MockPipe } from 'ng-mocks';
 import { GameInfoComponent } from './game-info.component';
 import { MinuteSecondPipe } from '../../pipes/minute-second.pipe';
 import { GameLengthService } from '../../services/game-length/game-length.service';
+import { HttpClient, HttpHandler } from '@angular/common/http';
 
 describe('GameInfoComponent', () => {
   let component: GameInfoComponent;
@@ -14,6 +15,8 @@ describe('GameInfoComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [GameInfoComponent, MockPipe(MinuteSecondPipe)],
       providers: [
+        HttpClient,
+        HttpHandler,
         {
           provide: GameLengthService,
           useValue: {
