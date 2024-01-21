@@ -1,4 +1,6 @@
 LolTimerApp
+
+Project to have a web application to get timers and spells cooldwons of LoL champions IG. Calling Riot API.
 =======
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
